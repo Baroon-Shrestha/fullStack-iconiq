@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Cursor from "../HelperComponents/Cursor";
-import ProjectCard from "../HelperComponents/ProjectCard";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // Importing framer motion
 
 const projects = [
   {
@@ -20,7 +19,7 @@ const projects = [
     subtitle: "Immersive product experience",
   },
   {
-    image: "Uploads/namodebi.jpg",
+    image: "/Uploads/namodebi.jpg",
     title: "Navadebi Jwellers",
     subtitle: "Educational Consultancy",
   },
@@ -69,48 +68,111 @@ export default function HomeProjects() {
   }, []);
 
   return (
-    <div className="w-full bg-white ">
-      <div className="container mx-auto px-6 pt-[26rem] md:pt-20">
-        <div className="flex items-center flex-col justify-center mb-12 gap-4">
-          <div className="text-4xl md:text-7xl font-extrabold text-center ">
+    <div className="w-full bg-gray-50">
+      <div className="container mx-auto px-4 pt-12 md:pt-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-4xl font-extrabold text-gray-800">
             Our{" "}
-            <span className="logo bg-gradient-to-b from-[#C848C1] to-[#54A6F9] text-transparent bg-clip-text">
+            <span className="bg-gradient-to-b from-[#C848C1] to-[#54A6F9] text-transparent bg-clip-text">
               Projects
             </span>
-          </div>
-          <div className="text-center text-base md:text-xl font-extralight max-w-3xl">
-            Explore a curated selection of our work, where creativity meets
-            strategy. From impactful brand identities to dynamic digital
-            experiences, each project reflects our commitment to excellence and
-            innovation.
-          </div>
-        </div>
-        {/* {windowWidth >= 768 && (
-          <Cursor
-            isVisible={cursorState.isVisible}
-            position={cursorState.position}
-            text={cursorState.text}
-          />
-        )} */}
+          </h2>
+          <p className="text-lg font-light text-gray-600 mt-4 max-w-3xl mx-auto">
+            Explore a curated selection of our work. Each project reflects our
+            commitment to excellence and innovation.
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              index={index}
-              onHover={handleMouseEnter}
-              onLeave={handleMouseLeave}
-            />
-          ))}
+        {/* Centered Grid Layout with animations */}
+        <div className="flex justify-center">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            {/* Group 1: Momiji + Nisani */}
+            <div className="flex justify-center space-x-8">
+              {projects.slice(0, 2).map((project, index) => (
+                <motion.div
+                  className="w-full max-w-xs"
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.3, duration: 0.5 }}
+                  whileInView={{ opacity: 1 }} // Fade in when in view
+                  viewport={{ once: true }} // Trigger animation only once
+                >
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition-all ease-in-out duration-300 hover:shadow-2xl group">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-all duration-500"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-yellow-400 transition-all duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-2">
+                        {project.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Group 2: Kansai + Navadebi */}
+            <div className="flex justify-center space-x-8">
+              {projects.slice(2).map((project, index) => (
+                <motion.div
+                  className="w-full max-w-xs"
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.3, duration: 0.5 }}
+                  whileInView={{ opacity: 1 }} // Fade in when in view
+                  viewport={{ once: true }} // Trigger animation only once
+                >
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition-all ease-in-out duration-300 hover:shadow-2xl group">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-all duration-500"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-yellow-400 transition-all duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-2">
+                        {project.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-        <Link to="/project">
-          <div className="mt-16 text-center">
-            <button className="text-2xl font-medium text-gray-600 border-b border-gray-300 hover:text-black hover:border-black transition-all duration-300">
-              View all Projects →
-            </button>
-          </div>
-        </Link>
+
+        <div className="mt-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 1 }}
+          >
+            <Link to="/projects">
+              <button className="text-lg font-medium text-gray-700 border-b-2 border-gray-300 hover:border-gray-500 transition-all duration-300 hover:text-yellow-400">
+                View All Projects →
+              </button>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

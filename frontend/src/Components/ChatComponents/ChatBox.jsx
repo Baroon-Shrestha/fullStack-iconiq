@@ -10,15 +10,13 @@ export default function ChatBox() {
   const [text, setText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Load all sessions
   useEffect(() => {
     axios
-      .get("http://localhost:3000/admin/users", { withCredentials: true })
+      .get("http://localhost:3000/admin/usernames", { withCredentials: true })
       .then((res) => setSessions(res.data))
-      .catch((err) => console.error("Failed to fetch sessions", err));
+      .catch((err) => console.error("Failed to fetch usernames", err));
   }, []);
 
-  // Load messages when a session is selected
   useEffect(() => {
     if (!selectedSession) return;
 
@@ -42,10 +40,11 @@ export default function ChatBox() {
         [sessionId]: [...(prev[sessionId] || []), msg],
       }));
 
-      // If it's a new session not already listed
-      setSessions((prev) =>
-        prev.includes(sessionId) ? prev : [sessionId, ...prev]
-      );
+      setSessions((prev) => {
+        const exists = prev.find((s) => s.sessionId === sessionId);
+        if (exists) return prev;
+        return [{ sessionId, username: sessionId }, ...prev]; // fallback if not registered
+      });
     });
 
     return () => socket.off("receive_message");
@@ -78,8 +77,8 @@ export default function ChatBox() {
     if (e.key === "Enter") sendMessage();
   };
 
-  const filteredSessions = sessions.filter((session) =>
-    session.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredSessions = sessions.filter((s) =>
+    s.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const getLastMessage = (sessionId) => {
@@ -91,6 +90,13 @@ export default function ChatBox() {
     const messages = allMessages[sessionId] || [];
     const lastMessage = messages[messages.length - 1];
     return lastMessage && lastMessage.sender === "user";
+  };
+
+  const getUsername = (sessionId) => {
+    const session = sessions.find((s) => s.sessionId === sessionId);
+    return session?.username && session.username !== sessionId
+      ? session.username
+      : sessionId;
   };
 
   return (
@@ -111,7 +117,7 @@ export default function ChatBox() {
             <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
-              placeholder="Search conversations..."
+              placeholder="Search by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -121,7 +127,7 @@ export default function ChatBox() {
 
         {/* Session List */}
         <div className="flex-1 overflow-y-auto">
-          {filteredSessions.map((sessionId, index) => {
+          {filteredSessions.map(({ sessionId, username }, index) => {
             const lastMessage = getLastMessage(sessionId);
             const isActive = selectedSession === sessionId;
             const hasUnread = hasUnreadMessages(sessionId);
@@ -153,7 +159,7 @@ export default function ChatBox() {
                           isActive ? "text-blue-900" : "text-gray-900"
                         }`}
                       >
-                        {sessionId}
+                        {username}
                       </h3>
                       {hasUnread && (
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -169,10 +175,7 @@ export default function ChatBox() {
                       <p className="text-xs text-gray-400 mt-1">
                         {new Date(lastMessage.timestamp).toLocaleTimeString(
                           [],
-                          {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          }
+                          { hour: "2-digit", minute: "2-digit" }
                         )}
                       </p>
                     )}
@@ -196,7 +199,7 @@ export default function ChatBox() {
                 </div>
                 <div>
                   <h2 className="font-semibold text-gray-900">
-                    {selectedSession}
+                    {getUsername(selectedSession)}
                   </h2>
                   <p className="text-sm text-green-600">Online</p>
                 </div>

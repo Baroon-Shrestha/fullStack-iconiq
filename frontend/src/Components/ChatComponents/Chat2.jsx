@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
-
-import axios from "axios"; // ✅ Import real axios
+import axios from "axios";
 import { socket } from "../../../socket";
 
-// Get or create session ID
 const sessionId = localStorage.getItem("sessionId") || Date.now().toString();
 localStorage.setItem("sessionId", sessionId);
 
@@ -13,10 +11,37 @@ export default function Chat2() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || sessionId
+  );
   const chatEndRef = useRef(null);
 
-  // Load existing messages + socket listener
+  const saveUsername = async (newName) => {
+    try {
+      await axios.post("http://localhost:3000/admin/save-session", {
+        sessionId,
+        username: newName,
+      });
+      console.log("Username saved.");
+    } catch (err) {
+      console.error("Error saving username:", err);
+    }
+  };
+
+  const handleNameUpdate = () => {
+    const newName = prompt("Enter your name:");
+    if (newName) {
+      setUsername(newName);
+      localStorage.setItem("username", newName);
+      saveUsername(newName);
+    }
+  };
+
   useEffect(() => {
+    if (username) {
+      saveUsername(username); // only save if username already exists
+    }
+
     axios
       .get(`http://localhost:3000/admin/session/${sessionId}`)
       .then((res) => {
@@ -50,9 +75,10 @@ export default function Chat2() {
 
     const msgData = {
       sessionId,
-      senderId: "user",
+      senderId: username || sessionId,
       receiverId: "admin",
       text: input,
+      username: username || sessionId,
     };
 
     socket.emit("send_message", msgData);
@@ -70,7 +96,6 @@ export default function Chat2() {
 
   return (
     <>
-      {/* Chat Toggle Button */}
       {!isOpen && (
         <div
           onClick={toggleChat}
@@ -86,16 +111,20 @@ export default function Chat2() {
         </div>
       )}
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-6 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200 backdrop-blur-sm">
           {/* Header */}
           <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-4 shadow-lg">
             <div className="flex items-center space-x-3">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
-              <div>
+              <div className="flex flex-col">
                 <h2 className="font-bold text-lg">Live Support</h2>
-                <p className="text-xs opacity-90">We're here to help</p>
+                <button
+                  onClick={handleNameUpdate}
+                  className="text-[11px] underline text-white/80 hover:text-white"
+                >
+                  {username ? `Name: ${username}` : "Set Your Name"}
+                </button>
               </div>
             </div>
             <button
@@ -106,7 +135,7 @@ export default function Chat2() {
             </button>
           </div>
 
-          {/* Messages Container */}
+          {/* Messages */}
           <div className="flex-1 overflow-hidden flex flex-col">
             <div className="flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
               <div className="space-y-4 min-h-full">
@@ -179,7 +208,7 @@ export default function Chat2() {
             </div>
           </div>
 
-          {/* Input Area */}
+          {/* Input */}
           <div className="border-t border-gray-200 bg-gray-50/50 p-4">
             <div className="flex items-center space-x-3 bg-white rounded-full border border-gray-200 shadow-sm">
               <input
@@ -205,18 +234,14 @@ export default function Chat2() {
         </div>
       )}
 
-      {/* Custom Scrollbar Styles */}
-      <style jsx>{`
-        .scrollbar-thin::-webkit-scrollbar {
-          width: 4px;
-        }
+      {/* Scrollbar Styling */}
+      <style>{`
+        .scrollbar-thin::-webkit-scrollbar { width: 4px; }
         .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
           background-color: rgb(209, 213, 219);
           border-radius: 2px;
         }
-        .scrollbar-track-transparent::-webkit-scrollbar-track {
-          background: transparent;
-        }
+        .scrollbar-track-transparent::-webkit-scrollbar-track { background: transparent; }
         .scrollbar-thin::-webkit-scrollbar-thumb:hover {
           background-color: rgb(156, 163, 175);
         }

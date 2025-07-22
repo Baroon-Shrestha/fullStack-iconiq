@@ -19,6 +19,9 @@ import AdminPanel from "./Components/ChatComponents/AdminPanel";
 import LoginDialog from "./Components/ChatComponents/LoginDialog";
 import Chat2 from "./Components/ChatComponents/Chat2";
 import AdminRoutes from "./Routes/AdminRoutes";
+import BlogPage from "./Pages/BlogPage";
+import BlogDescription from "./Components/BlogComponents/BlogDescription";
+import BlogMarkdownForm from "./Components/BlogComponents/BlogMarkdownForm";
 
 export default function App() {
   const [admin, setAdmin] = useState(null);
@@ -35,38 +38,44 @@ export default function App() {
 
   return (
     <>
-      <div className="m-6">
-        <Toaster position="top-center" />
-        <ScrollToTop />
-        <Chat2 />
-        <Nav />
+      <div className="bg-[#FAF7F0]">
+        <div className="m-6">
+          <Toaster position="top-center" />
+          <ScrollToTop />
+          <Chat2 />
+          <Nav />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/client" element={<Client />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/chat"
-            element={
-              <AdminRoutes>
-                <ChatPage />
-              </AdminRoutes>
-            }
-          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/project" element={<Project />} />
+            <Route path="/client" element={<Client />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogDescription />} />
+            <Route path="/add" element={<BlogMarkdownForm />} />
+            {/* <Route path="/blog/:id" element={<BlogPage />} /> */}
+            <Route
+              path="/chat"
+              element={
+                <AdminRoutes>
+                  <ChatPage />
+                </AdminRoutes>
+              }
+            />
 
-          <Route
-            path="/admin"
-            element={
-              admin ? <AdminPanel /> : <LoginDialog onLogin={setAdmin} />
-            }
-          />
-        </Routes>
+            <Route
+              path="/admin"
+              element={
+                admin ? <AdminPanel /> : <LoginDialog onLogin={setAdmin} />
+              }
+            />
+          </Routes>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </>
   );

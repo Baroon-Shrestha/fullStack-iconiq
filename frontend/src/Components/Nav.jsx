@@ -68,6 +68,8 @@ export default function Nav() {
     { path: "/project", label: "Work" },
     { path: "/services", label: "Services" },
     { path: "/pricing", label: "Pricing" },
+    { path: "/blog", label: "Blogs" },
+
     ...(admin?.role === "admin" ? [{ path: "/chat", label: "Chat" }] : []),
   ];
 

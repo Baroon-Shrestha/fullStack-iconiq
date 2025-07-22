@@ -8,10 +8,19 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5174",
+    origin: "http://localhost:5173",
     credentials: true,
   },
 });
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      callback(null, origin || "*"); // Allow any origin dynamically
+    },
+    credentials: true,
+  })
+);
 
 setupSocket(io); // 💬 Register Socket.IO logic
 

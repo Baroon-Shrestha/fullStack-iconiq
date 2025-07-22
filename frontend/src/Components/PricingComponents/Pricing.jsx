@@ -5,13 +5,9 @@ import {
   FaPaintBrush,
   FaUsers,
   FaBullhorn,
-  FaVideo,
-  FaCheck,
   FaStar,
   FaArrowRight,
-  FaInstagram,
-  FaTiktok,
-  FaChartLine,
+  FaCheck,
 } from "react-icons/fa";
 import PricingCTA from "./PricingCTA";
 
@@ -138,6 +134,16 @@ export default function Pricing() {
     },
   ];
 
+  // WhatsApp message URL construction function
+  const generateWhatsAppLink = (service) => {
+    const message = `Hello! I'm interested in the "${service.title}" package. Could you provide more details?`;
+    const phoneNumber = "9864687572"; // Your new WhatsApp business number
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    return url;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-20">
       {/* Header Section */}
@@ -253,12 +259,15 @@ export default function Pricing() {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <button
+                  <a
+                    href={generateWhatsAppLink(service)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-full bg-gradient-to-r ${service.gradient} text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group-hover:shadow-xl flex items-center justify-center`}
                   >
                     Get Started Now
                     <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

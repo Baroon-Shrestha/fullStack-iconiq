@@ -1,5 +1,5 @@
 const ChatMessage = require("../Models/ChatMessage");
-
+const SessionInfo = require("../Models/SessionInfo");
 // Admin: Get all chat messages
 const getAllMessages = async (req, res) => {
   try {
@@ -22,6 +22,16 @@ const getAllSessions = async (req, res) => {
   } catch (err) {
     console.error("Error in getAllSessions:", err.message);
     res.status(500).json({ message: "Error fetching sessions" });
+  }
+};
+
+const getAllSessionsWithUsernames = async (req, res) => {
+  try {
+    const sessions = await SessionInfo.find().sort({ createdAt: -1 });
+    res.status(200).json(sessions);
+  } catch (err) {
+    console.error("Error in getAllSessionsWithUsernames:", err.message);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -48,4 +58,5 @@ module.exports = {
   getAllMessages,
   getAllSessions,
   getMessagesBySession,
+  getAllSessionsWithUsernames,
 };
