@@ -11,6 +11,7 @@ export default function Chat2() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
   const [username, setUsername] = useState(
     localStorage.getItem("username") || sessionId
   );
@@ -19,7 +20,7 @@ export default function Chat2() {
 
   const saveUsername = async (newName) => {
     try {
-      await axios.post("http://localhost:3000/admin/save-session", {
+      await axios.post(`${API_URL}/admin/save-session`, {
         sessionId,
         username: newName,
       });
@@ -41,7 +42,7 @@ export default function Chat2() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/admin/session/${sessionId}`)
+      .get(`${API_URL}/admin/session/${sessionId}`)
       .then((res) => {
         setMessages(res.data);
         setLoading(false);

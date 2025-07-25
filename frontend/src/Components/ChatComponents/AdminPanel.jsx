@@ -3,10 +3,10 @@ import axios from "axios";
 
 export default function AdminPanel() {
   const [messages, setMessages] = useState([]);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     axios
-      .get("http://localhost:3000/admin/getmessages", { withCredentials: true })
+      .get(`${API_URL}/admin/getmessages`, { withCredentials: true })
       .then((res) => {
         setMessages(res.data);
       });

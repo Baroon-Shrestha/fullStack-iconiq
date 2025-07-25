@@ -11,7 +11,7 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -19,7 +19,7 @@ export default function AdminLogin() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/login",
+        `${API_URL}/admin/login`,
         { username, password },
         { withCredentials: true }
       );

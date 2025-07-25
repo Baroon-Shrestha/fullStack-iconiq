@@ -28,10 +28,11 @@ export default function App() {
   const [adminState, setAdminState] = useState(null);
   const { admin } = useAuth(); // ✅ get admin from AuthContext
   const location = useLocation();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/admin/me", { withCredentials: true })
+      .get(`${API_URL}/admin/me`, { withCredentials: true })
       .then((res) => {
         setAdminState(res.data.username);
       })
