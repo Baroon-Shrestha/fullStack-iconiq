@@ -156,7 +156,7 @@ export default function MissionVisionSections() {
             viewport={{ once: true }}
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-blue-200 to-teal-200 rounded-3xl blur-xl opacity-30"></div>
-            <div className="relative bg-white rounded-2xl p-8 shadow-xl">
+            <div className="relative  rounded-2xl p-8 shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
                 alt="Vision"

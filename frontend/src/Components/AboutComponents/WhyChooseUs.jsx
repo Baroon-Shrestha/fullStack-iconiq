@@ -27,7 +27,7 @@ export default function WhyChooseUs({ features }) {
       icon: "📈",
       title: "Content That Goes Viral",
       description:
-        "We create short-form videos and content that people love to watch and share. Our content regularly reaches 100K+ views, helping you grow a real and active audience.",
+        "We create short-form videos and content that people love to watch and share. Our content regularly reaches thousands of views, helping you grow a real and active audience.",
       color: "from-pink-400 to-rose-500",
     },
   ];
@@ -35,7 +35,7 @@ export default function WhyChooseUs({ features }) {
   const displayFeatures = features || defaultFeatures;
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#C848C1] to-[#54A6F9] rounded-4xl text-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-[#C848C1] to-[#54A6F9] rouned-4xl text-white relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>

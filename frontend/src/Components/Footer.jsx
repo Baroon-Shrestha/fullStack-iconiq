@@ -56,7 +56,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] text-white mt-16 rounded-4xl relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] text-white mt-16 rouned-4xl relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-24 h-24 bg-yellow-300 rounded-full blur-2xl animate-pulse delay-1000"></div>
@@ -159,16 +159,13 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div className="w-42 h-42">
-              <img src="Uploads/QR.png" alt="" className="boject-cover" />
-            </div>
           </div>
         </div>
 
         <div className="border-t border-white/30 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/80">
-              © {currentYear} Iconiq. All rights reserved. | Made with ❤️.
+            <p className="text-sm text-white/80 text-center">
+              © {currentYear} Iconiq. All rights reserved.
             </p>
 
             <div className="flex items-center space-x-4">

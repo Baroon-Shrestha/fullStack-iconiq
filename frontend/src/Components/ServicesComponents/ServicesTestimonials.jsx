@@ -55,7 +55,7 @@ const clientTestimonials = [
 export default function ServicesTestimonials() {
   return (
     <>
-      <div className="bg-gradient-to-r from-[#C848C1] to-[#54A6F9] pt-12 p-4 rounded-4xl">
+      <div className="bg-gradient-to-r from-[#C848C1] to-[#54A6F9] pt-12 p-4 ">
         <div className="text-4xl md:text-6xl px-4 md:px-0 text-center capitalize text-white">
           Hear what our{" "}
           <span className="logo  bg-gradint-to-b from-[#C848C1] to-[#54A6F9] text-trasparent b-clip-text">

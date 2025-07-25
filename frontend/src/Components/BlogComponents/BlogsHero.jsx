@@ -20,7 +20,7 @@ export default function BlogsHero() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-[60vh] md:min-h-[80vh] overflow-hidden rounded-4xl flex flex-col justify-end text-white">
+    <div className="relative w-full min-h-[60vh] md:min-h-[80vh] overflow-hidden rounded-b-4xl flex flex-col justify-end text-white shadow-2xl shadow-slate-500">
       {/* Background Carousel */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -35,7 +35,7 @@ export default function BlogsHero() {
       </AnimatePresence>
 
       {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-4xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pb-16">
@@ -45,10 +45,8 @@ export default function BlogsHero() {
               Blogs
             </h1>
             <p className="text-lg md:text-xl font-extralight max-w-2xl leading-relaxed text-white/90 drop-shadow-sm">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
-              modi, error explicabo vitae nostrum iste, ea repudiandae
-              blanditiis ipsum aspernatur voluptate temporibus dolor, harum
-              amet!
+              Insights, Ideas, and Inspiration — Explore Our Latest Blog
+              Articles on Design, Development, and Digital Trends.
             </p>
           </div>
         </div>

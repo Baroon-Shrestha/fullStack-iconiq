@@ -26,8 +26,7 @@ const projectsData = [
     category: "Websites",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=350&fit=crop",
+    image: "Uploads/kings.png",
     title: "King Motors Pvt. Ltd",
     subtitle: "Reconditioned Cars Showroom",
     description:
@@ -42,11 +41,11 @@ const projectsData = [
     title: "NS Automobile Pvt. Ltd",
     subtitle: "Reconditioned Cars Showroom",
     description:
-      "We built a powerful web platform for King Motors Pvt. Ltd, enabling them to list their reconditioned car inventory with full specs, real-time updates, and customer support. The platform includes a search and filter system to improve browsing, making the car-buying process smoother for users.",
-    tags: ["Poster Design"],
+      "For NS Automobile Pvt. Ltd, a leading reconditioned car showroom, we delivered a comprehensive digital presence through strategic digital marketing campaigns, visually engaging posters, motion graphics content, and cohesive branding solutions. Our work enhanced their brand visibility and positioned them more competitively in the automotive retail market.",
+    tags: ["Poster Design", "Digital Marketing", "Motion Graphics", "Branding"],
     year: "2025",
     height: 350,
-    category: ["Branding", "Websites"],
+    category: ["Branding"],
   },
   {
     image: "Uploads/doller.jpg",
@@ -60,7 +59,7 @@ const projectsData = [
     category: "Websites",
   },
   {
-    image: "Uploads/omni.jpg",
+    image: "Uploads/omni2.png",
     title: "Omni Global International Educational Consultancy",
     subtitle: "Japanese-Focused Educational Consultancy",
     description:
@@ -121,7 +120,7 @@ function Cursor({ isVisible, position, text }) {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-30 bg-black text-white px-4 py-2 rounded-full text-sm font-medium"
+      className="fixed pointer-events-none z-30 bg-black text-white px-4 py-2 text-sm font-medium"
       style={{
         left: position.x,
         top: position.y,

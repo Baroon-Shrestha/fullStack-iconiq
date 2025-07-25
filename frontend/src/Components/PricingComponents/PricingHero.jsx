@@ -5,17 +5,17 @@ export default function PricingHero() {
   const backgroundImage = "Uploads/pricing.jpg";
 
   return (
-    <div className="relative min-h-[60vh] md:min-h-[80vh]  flex flex-col justify-end rounded-4xl text-white overflow-hidden">
+    <div className="relative min-h-[60vh] md:min-h-[80vh]  flex flex-col justify-end rounded-b-4xl text-white overflow-hidden shadow-2xl shadow-slate-500">
       <div
-        className="absolute inset-0 bg-cover bg-center rounded-4xl "
+        className="absolute inset-0 bg-cover bg-center "
         style={{
           backgroundImage: `url('${backgroundImage}')`,
         }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent rounded-4xl" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 rounded-4xl" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/40 rounded-4xl" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent " />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 " />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/40 " />
 
       {/* Content */}
       <div className="container mx-auto pb-16 z-10 relative">

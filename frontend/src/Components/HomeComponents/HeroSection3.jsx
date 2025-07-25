@@ -118,7 +118,7 @@ export default function HeroSection3() {
   }, []); // Empty dependency array - only runs on mount
 
   return (
-    <div className="min-h-[80vh] relative overflow-hidden rounded-4xl">
+    <div className="min-h-[80vh] relative overflow-hidden rounded-b-4xl shadow-2xl shadow-slate-500">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="flex h-full"

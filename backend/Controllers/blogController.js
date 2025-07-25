@@ -10,7 +10,6 @@ const postBlog = async (req, res) => {
     categories = [],
     shortDescription = "",
     content,
-    tags,
     isPublished = false,
   } = req.body;
 
@@ -21,10 +20,10 @@ const postBlog = async (req, res) => {
     });
   }
 
-  if (!title || !content || !tags) {
+  if (!title || !content) {
     return res.status(400).json({
       success: false,
-      message: "Title, tags and content are required.",
+      message: "Title and content are required.",
     });
   }
 
@@ -76,6 +75,35 @@ const postBlog = async (req, res) => {
 const getAllBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({ isPublished: true }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json({ success: true, blogs });
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+const getAllCategories = async (req, res) => {
+  try {
+    const categories = await Blog.distinct("categories");
+    res.status(200).json({ success: true, categories });
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+const getBlogAsAdmin = async (req, res) => {
+  const { role } = req.user;
+
+  if (role != "admin")
+    return res
+      .status(400)
+      .json({ success: true, message: "You must be an Admin" });
+
+  try {
+    const blogs = await Blog.find({}).sort({
       createdAt: -1,
     });
     res.status(200).json({ success: true, blogs });
@@ -139,9 +167,51 @@ const deleteBlog = async (req, res) => {
   }
 };
 
+// PATCH: Update publish status (Admin only)
+const updatePublishStatus = async (req, res) => {
+  const { role } = req.user;
+  const { id } = req.params;
+  const { isPublished } = req.body;
+
+  if (role !== "admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Only admins can update publish status.",
+    });
+  }
+
+  try {
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found.",
+      });
+    }
+
+    blog.isPublished = isPublished;
+    await blog.save();
+
+    return res.status(200).json({
+      success: true,
+      message: `Blog marked as ${isPublished ? "Published" : "Draft"}.`,
+      blog,
+    });
+  } catch (error) {
+    console.error("Error updating publish status:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error while updating publish status.",
+    });
+  }
+};
+
 module.exports = {
   postBlog,
   getAllBlogs,
   getOneBlog,
   deleteBlog,
+  getBlogAsAdmin,
+  updatePublishStatus,
+  getAllCategories,
 };

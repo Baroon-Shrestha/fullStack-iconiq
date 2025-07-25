@@ -28,7 +28,7 @@ const clientsData = [
   },
   {
     id: 4,
-    title: "King Motors",
+    title: "Kings Motor",
     description:
       "Premium vehicles reconditioning and comprehensive automotive services",
     category: "Automotive",
@@ -44,7 +44,7 @@ const clientsData = [
   },
   {
     id: 6,
-    title: "Omni",
+    title: "Omni Global",
     description:
       "Japanese language training center with innovative learning approaches",
     category: "Education",
@@ -146,11 +146,7 @@ export default function Clients() {
   }, [isStatsVisible]);
 
   return (
-    <section className="py-14 rounded-4xl my-12 bg-gradient-to-br from-gray-50  via-white to-gray-100 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#C848C1]/10 to-[#54A6F9]/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-[#54A6F9]/10 to-[#C848C1]/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
-
+    <section className="py-14 my-12 relative overflow-hidden">
       <div className="container mx-auto px-4 text-center relative z-10">
         {/* Enhanced Heading */}
         <div className="mb-16">
@@ -202,9 +198,7 @@ export default function Clients() {
                 animation: "fadeInUp 0.6s ease-out forwards",
               }}
             >
-              {/* Client Card */}
               <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden">
-                {/* Background Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${client.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
                 ></div>
@@ -221,7 +215,7 @@ export default function Clients() {
                 {/* Client Logo/Title */}
                 <div className="relative z-10">
                   <h3
-                    className={`text-lg md:text-3xl font-bold logo transition-all duration-300 ${
+                    className={`text-lg md:text-2xl font-bold logo transition-all duration-300 ${
                       hoveredClient === client.id
                         ? `bg-gradient-to-r ${client.color} text-transparent bg-clip-text`
                         : "text-gray-700 group-hover:text-gray-900"

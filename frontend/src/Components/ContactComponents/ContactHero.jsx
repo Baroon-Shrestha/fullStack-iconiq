@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactHero() {
   return (
-    <div className="relative min-h-[60vh] md:min-h-[80vh]  flex flex-col justify-end rounded-4xl text-white overflow-hidden">
+    <div className="relative min-h-[60vh] md:min-h-[80vh]  flex flex-col justify-end rounded-4xl text-white overflow-hidden shadow-2xl shadow-slate-500">
       {/* Background Carousel with Enhanced Fade */}
       <div>
         <AnimatePresence mode="wait">

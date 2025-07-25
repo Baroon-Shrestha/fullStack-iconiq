@@ -11,38 +11,43 @@ import Client from "./Pages/Client";
 import ScrollToTop from "./Components/HelperComponents/ScrollToTop";
 import Pricing from "./Pages/Pricing";
 import { Toaster } from "react-hot-toast";
-import Chat from "./Components/ChatComponents/Chat";
+import Chat2 from "./Components/ChatComponents/Chat2";
 import ChatPage from "./Pages/ChatPage";
 
 import axios from "axios";
 import AdminPanel from "./Components/ChatComponents/AdminPanel";
 import LoginDialog from "./Components/ChatComponents/LoginDialog";
-import Chat2 from "./Components/ChatComponents/Chat2";
 import AdminRoutes from "./Routes/AdminRoutes";
 import BlogPage from "./Pages/BlogPage";
 import BlogDescription from "./Components/BlogComponents/BlogDescription";
 import BlogMarkdownForm from "./Components/BlogComponents/BlogMarkdownForm";
+import Policy from "./Pages/Policy";
+import { useAuth } from "./Components/Context/AuthContext";
 
 export default function App() {
-  const [admin, setAdmin] = useState(null);
+  const [adminState, setAdminState] = useState(null);
+  const { admin } = useAuth(); // ✅ get admin from AuthContext
   const location = useLocation();
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/admin/me", { withCredentials: true })
       .then((res) => {
-        setAdmin(res.data.username);
+        setAdminState(res.data.username);
       })
-      .catch(() => setAdmin(null));
+      .catch(() => setAdminState(null));
   }, []);
 
   return (
     <>
       <div className="bg-[#FAF7F0]">
-        <div className="m-6">
+        <div className="">
           <Toaster position="top-center" />
           <ScrollToTop />
-          <Chat2 />
+
+          {/* ✅ Render Chat2 only if NOT admin */}
+          {!admin && <Chat2 />}
+
           <Nav />
 
           <Routes>
@@ -54,9 +59,20 @@ export default function App() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/policy" element={<Policy />} />
             <Route path="/blog/:id" element={<BlogDescription />} />
-            <Route path="/add" element={<BlogMarkdownForm />} />
-            {/* <Route path="/blog/:id" element={<BlogPage />} /> */}
+
+            <Route
+              path="/add"
+              element={
+                <AdminRoutes>
+                  <BlogMarkdownForm />
+                </AdminRoutes>
+              }
+            />
+
+            {/* {location.pathname !== "/add" && } */}
+
             <Route
               path="/chat"
               element={
@@ -69,12 +85,17 @@ export default function App() {
             <Route
               path="/admin"
               element={
-                admin ? <AdminPanel /> : <LoginDialog onLogin={setAdmin} />
+                adminState ? (
+                  <AdminPanel />
+                ) : (
+                  <LoginDialog onLogin={setAdminState} />
+                )
               }
             />
           </Routes>
-
-          <Footer />
+          {!["/chat", "/add", "/admin"].includes(location.pathname) && (
+            <Footer />
+          )}
         </div>
       </div>
     </>

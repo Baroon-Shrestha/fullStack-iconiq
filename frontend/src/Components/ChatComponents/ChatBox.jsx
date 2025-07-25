@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Send, User, MessageCircle, Search } from "lucide-react";
+import {
+  Send,
+  User,
+  MessageCircle,
+  Search,
+  ArrowLeft,
+  Menu,
+  Clock,
+  CheckCheck,
+} from "lucide-react";
 import axios from "axios";
 import { socket } from "../../../socket";
 
@@ -9,6 +18,7 @@ export default function ChatBox() {
   const [allMessages, setAllMessages] = useState({});
   const [text, setText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -66,7 +76,7 @@ export default function ChatBox() {
       ...prev,
       [selectedSession]: [
         ...(prev[selectedSession] || []),
-        { ...msg, sender: "admin", message: text },
+        { ...msg, sender: "admin", message: text, timestamp: Date.now() },
       ],
     }));
 
@@ -77,14 +87,23 @@ export default function ChatBox() {
     if (e.key === "Enter") sendMessage();
   };
 
-  const filteredSessions = sessions.filter((s) =>
-    s.username.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   const getLastMessage = (sessionId) => {
     const messages = allMessages[sessionId] || [];
     return messages.length > 0 ? messages[messages.length - 1] : null;
   };
+
+  const getLastMessageTime = (sessionId) => {
+    const lastMessage = getLastMessage(sessionId);
+    return lastMessage?.timestamp || 0;
+  };
+
+  const filteredSessions = [...sessions]
+    .filter((s) => s.username.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => {
+      const aTime = getLastMessageTime(a.sessionId);
+      const bTime = getLastMessageTime(b.sessionId);
+      return bTime - aTime; // sort descending: newest first
+    });
 
   const hasUnreadMessages = (sessionId) => {
     const messages = allMessages[sessionId] || [];
@@ -99,115 +118,250 @@ export default function ChatBox() {
       : sessionId;
   };
 
+  const handleSessionSelect = (sessionId) => {
+    setSelectedSession(sessionId);
+    setIsMobileSidebarOpen(false); // Close mobile sidebar when session is selected
+  };
+
+  const handleBackToSessions = () => {
+    setSelectedSession(null);
+    setIsMobileSidebarOpen(true);
+  };
+
+  const formatTime = (timestamp) => {
+    if (!timestamp) return "";
+    const now = new Date();
+    const msgTime = new Date(timestamp);
+    const diffInHours = (now - msgTime) / (1000 * 60 * 60);
+
+    if (diffInHours < 24) {
+      return msgTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } else {
+      return msgTime.toLocaleDateString([], { month: "short", day: "numeric" });
+    }
+  };
+
+  const SessionListItem = ({
+    sessionId,
+    username,
+    isActive = false,
+    isMobile = false,
+  }) => {
+    const lastMessage = getLastMessage(sessionId);
+    const hasUnread = hasUnreadMessages(sessionId);
+
+    return (
+      <div
+        onClick={() => handleSessionSelect(sessionId)}
+        className={`relative p-4 cursor-pointer transition-all duration-200 hover:bg-slate-50 border-b border-slate-100 ${
+          isActive ? "bg-blue-50 border-r-4 border-r-blue-500" : ""
+        } ${isMobile ? "active:bg-slate-100" : ""}`}
+      >
+        <div className="flex items-start gap-3">
+          <div className="relative">
+            <div
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
+                hasUnread
+                  ? "bg-gradient-to-br from-emerald-100 to-emerald-200"
+                  : "bg-gradient-to-br from-slate-100 to-slate-200"
+              }`}
+            >
+              <User
+                className={`w-6 h-6 ${
+                  hasUnread ? "text-emerald-600" : "text-slate-600"
+                }`}
+              />
+            </div>
+            {hasUnread && (
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center">
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex justify-between items-start mb-1">
+              <h3
+                className={`text-sm font-semibold truncate ${
+                  isActive ? "text-blue-900" : "text-slate-900"
+                } ${hasUnread ? "text-slate-900" : ""}`}
+              >
+                {username}
+              </h3>
+
+              {lastMessage?.timestamp && (
+                <span className="text-xs text-slate-400 ml-2 flex-shrink-0">
+                  {formatTime(lastMessage.timestamp)}
+                </span>
+              )}
+            </div>
+
+            {lastMessage && (
+              <div className="flex items-center gap-1">
+                {lastMessage.sender === "admin" && (
+                  <CheckCheck className="w-3 h-3 text-blue-500 flex-shrink-0" />
+                )}
+                <p
+                  className={`text-xs truncate ${
+                    hasUnread ? "text-slate-700 font-medium" : "text-slate-500"
+                  }`}
+                >
+                  {lastMessage.sender === "admin" ? "" : ""}
+                  {lastMessage.message || lastMessage.text}
+                </p>
+              </div>
+            )}
+
+            {!lastMessage && (
+              <p className="text-xs text-slate-400 italic">No messages yet</p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
+    <div className="flex h-[80vh] bg-gradient-to-br from-slate-50 to-slate-100 mt-12 rounded-4xl overflow-hidden">
+      <div className="hidden md:flex w-80 bg-white/80 backdrop-blur-sm border-r border-slate-200 flex-col shadow-xl h-full overflow-hidden">
         {/* Header */}
-        <div className="p-4 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <MessageCircle className="w-6 h-6 text-blue-600" />
+        <div className="p-6 border-b border-slate-200 bg-gradient-to-r from-blue-600 to-blue-700">
+          <h1 className="text-xl font-bold text-white flex items-center gap-3">
+            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-white" />
+            </div>
             Admin Chat
           </h1>
+          <p className="text-blue-100 text-sm mt-1">Manage conversations</p>
         </div>
 
         {/* Search */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-slate-200 bg-white">
           <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Search by name..."
+              placeholder="Search conversations..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-50 transition-all"
             />
           </div>
         </div>
 
         {/* Session List */}
-        <div className="flex-1 overflow-y-auto">
-          {filteredSessions.map(({ sessionId, username }, index) => {
-            const lastMessage = getLastMessage(sessionId);
-            const isActive = selectedSession === sessionId;
-            const hasUnread = hasUnreadMessages(sessionId);
-
-            return (
-              <div
+        <div className="flex-1 overflow-y-auto bg-white min-h-0">
+          {filteredSessions.length > 0 ? (
+            filteredSessions.map(({ sessionId, username }, index) => (
+              <SessionListItem
                 key={index}
-                onClick={() => setSelectedSession(sessionId)}
-                className={`p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors ${
-                  isActive ? "bg-blue-50 border-r-4 border-r-blue-600" : ""
-                }`}
-              >
-                <div className="flex items-start gap-3">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      hasUnread ? "bg-green-100" : "bg-gray-100"
-                    }`}
-                  >
-                    <User
-                      className={`w-5 h-5 ${
-                        hasUnread ? "text-green-600" : "text-gray-600"
-                      }`}
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3
-                        className={`text-sm font-semibold truncate ${
-                          isActive ? "text-blue-900" : "text-gray-900"
-                        }`}
-                      >
-                        {username}
-                      </h3>
-                      {hasUnread && (
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      )}
-                    </div>
-                    {lastMessage && (
-                      <p className="text-xs text-gray-500 truncate">
-                        {lastMessage.sender === "admin" ? "You: " : ""}
-                        {lastMessage.message || lastMessage.text}
-                      </p>
-                    )}
-                    {lastMessage?.timestamp && (
-                      <p className="text-xs text-gray-400 mt-1">
-                        {new Date(lastMessage.timestamp).toLocaleTimeString(
-                          [],
-                          { hour: "2-digit", minute: "2-digit" }
-                        )}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                sessionId={sessionId}
+                username={username}
+                isActive={selectedSession === sessionId}
+              />
+            ))
+          ) : (
+            <div className="p-8 text-center">
+              <MessageCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+              <p className="text-slate-500">No conversations found</p>
+            </div>
+          )}
         </div>
       </div>
 
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          ></div>
+
+          {/* Sidebar */}
+          <div className="relative bg-white w-full max-w-sm flex flex-col shadow-2xl">
+            {/* Header */}
+            <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700">
+              <h1 className="text-xl font-bold text-white flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                Admin Chat
+              </h1>
+              <p className="text-blue-100 text-sm mt-1">Manage conversations</p>
+            </div>
+
+            {/* Search */}
+            <div className="p-4 border-b border-slate-200">
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search conversations..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-50"
+                />
+              </div>
+            </div>
+
+            {/* Session List */}
+            <div className="flex-1 overflow-y-auto">
+              {filteredSessions.length > 0 ? (
+                filteredSessions.map(({ sessionId, username }, index) => (
+                  <SessionListItem
+                    key={index}
+                    sessionId={sessionId}
+                    username={username}
+                    isMobile={true}
+                  />
+                ))
+              ) : (
+                <div className="p-8 text-center">
+                  <MessageCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="text-slate-500">No conversations found</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Chat */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-hidden">
         {selectedSession ? (
           <>
             {/* Header */}
-            <div className="bg-white p-4 border-b border-gray-200 shadow-sm">
+            <div className="bg-white/90 backdrop-blur-sm p-4 border-b border-slate-200 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <User className="w-4 h-4 text-blue-600" />
+                {/* Mobile Back Button */}
+                <button
+                  onClick={handleBackToSessions}
+                  className="md:hidden p-2 hover:bg-slate-100 rounded-full transition-colors"
+                >
+                  <ArrowLeft className="w-5 h-5 text-slate-600" />
+                </button>
+
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
+                  <User className="w-5 h-5 text-blue-600" />
                 </div>
-                <div>
-                  <h2 className="font-semibold text-gray-900">
+                <div className="flex-1">
+                  <h2 className="font-semibold text-slate-900">
                     {getUsername(selectedSession)}
                   </h2>
-                  <p className="text-sm text-green-600">Online</p>
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <p className="text-sm text-emerald-600">Online</p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-slate-50 to-white min-h-0">
               {(allMessages[selectedSession] || []).map((msg, idx) => (
                 <div
                   key={idx}
@@ -216,26 +370,37 @@ export default function ChatBox() {
                   }`}
                 >
                   <div
-                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                    className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl shadow-sm ${
                       msg.sender === "admin"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-gray-900 shadow-sm"
+                        ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white"
+                        : "bg-white text-slate-900 border border-slate-200"
                     }`}
                   >
-                    <p className="text-sm">{msg.message || msg.text}</p>
+                    <p className="text-sm leading-relaxed">
+                      {msg.message || msg.text}
+                    </p>
                     {msg.timestamp && (
-                      <p
-                        className={`text-xs mt-1 ${
-                          msg.sender === "admin"
-                            ? "text-blue-100"
-                            : "text-gray-500"
-                        }`}
-                      >
-                        {new Date(msg.timestamp).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </p>
+                      <div className="flex items-center justify-end gap-1 mt-2">
+                        <Clock
+                          className={`w-3 h-3 ${
+                            msg.sender === "admin"
+                              ? "text-blue-200"
+                              : "text-slate-400"
+                          }`}
+                        />
+                        <p
+                          className={`text-xs ${
+                            msg.sender === "admin"
+                              ? "text-blue-200"
+                              : "text-slate-500"
+                          }`}
+                        >
+                          {new Date(msg.timestamp).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -243,22 +408,22 @@ export default function ChatBox() {
             </div>
 
             {/* Input */}
-            <div className="bg-white p-4 border-t border-gray-200">
+            <div className="bg-white/90 backdrop-blur-sm p-4 border-t border-slate-200">
               <div className="flex items-center gap-3">
                 <input
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Type a message..."
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Type your message..."
+                  className="flex-1 px-4 py-3 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-50 transition-all"
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!text.trim()}
-                  className={`p-3 rounded-full transition-colors ${
+                  className={`p-3 rounded-full transition-all shadow-lg ${
                     text.trim()
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transform hover:scale-105"
+                      : "bg-slate-200 text-slate-400 cursor-not-allowed"
                   }`}
                 >
                   <Send className="w-5 h-5" />
@@ -267,14 +432,28 @@ export default function ChatBox() {
             </div>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center bg-gray-50">
-            <div className="text-center">
-              <MessageCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h2 className="text-xl font-semibold text-gray-700 mb-2">
+          <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50">
+            <div className="text-center max-w-md mx-auto p-8">
+              {/* Mobile: Show menu button when no session selected */}
+              <div className="md:hidden mb-8">
+                <button
+                  onClick={() => setIsMobileSidebarOpen(true)}
+                  className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all transform hover:scale-105 shadow-xl"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="w-10 h-10 text-blue-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-slate-800 mb-3">
                 Welcome to Admin Chat
               </h2>
-              <p className="text-gray-500">
-                Select a conversation to start chatting
+              <p className="text-slate-600 leading-relaxed">
+                {window.innerWidth < 768
+                  ? "Tap the menu button above to view and manage your conversations with users."
+                  : "Select a conversation from the sidebar to start chatting with users. All conversations are sorted by the most recent activity."}
               </p>
             </div>
           </div>

@@ -14,6 +14,7 @@ export default function Chat2() {
   const [username, setUsername] = useState(
     localStorage.getItem("username") || sessionId
   );
+  const [sessionSaved, setSessionSaved] = useState(false); // New flag
   const chatEndRef = useRef(null);
 
   const saveUsername = async (newName) => {
@@ -23,6 +24,7 @@ export default function Chat2() {
         username: newName,
       });
       console.log("Username saved.");
+      setSessionSaved(true);
     } catch (err) {
       console.error("Error saving username:", err);
     }
@@ -38,10 +40,6 @@ export default function Chat2() {
   };
 
   useEffect(() => {
-    if (username) {
-      saveUsername(username); // only save if username already exists
-    }
-
     axios
       .get(`http://localhost:3000/admin/session/${sessionId}`)
       .then((res) => {
@@ -70,8 +68,13 @@ export default function Chat2() {
 
   const toggleChat = () => setIsOpen(!isOpen);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!input.trim()) return;
+
+    // Save session info only on first message
+    if (!sessionSaved) {
+      await saveUsername(username || sessionId);
+    }
 
     const msgData = {
       sessionId,
@@ -105,7 +108,7 @@ export default function Chat2() {
             Need Help? 👋
             <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-slate-800"></div>
           </div>
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-pulse">
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce">
             <MessageCircle size={28} className="text-white" />
           </div>
         </div>

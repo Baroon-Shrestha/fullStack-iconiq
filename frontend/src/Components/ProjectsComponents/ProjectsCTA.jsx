@@ -15,7 +15,7 @@ export default function ProjectsCTA() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/pricing">
-              <button className="px-8 py-4 bg-white rounded-full hover:scale-105   transition-all duration-300">
+              <button className="rounded-full hover:scale-105   transition-all duration-300">
                 <p className="bg-gradient-to-r from-[#C848C1] to-[#54A6F9] text-lg font-bold px-6 py-2 text-white rounded-2xl">
                   View Our Pricing
                 </p>

@@ -68,7 +68,7 @@ const services = [
 
 export default function HomeServices() {
   return (
-    <section className="w-full min-h-screen rounded-4xl bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] py-20 px-4">
+    <section className="w-full min-h-screen rouned-4xl bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] py-20 px-4">
       <div className="container mx-auto text-center max-w-7xl">
         <h2 className="text-4xl text-white md:text-6xl font-extrabold mb-4 tracking-tight">
           One Stop Solution for You

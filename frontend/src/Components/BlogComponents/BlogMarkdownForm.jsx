@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Editor } from "@tinymce/tinymce-react";
+import CreatableSelect from "react-select/creatable";
+import makeAnimated from "react-select/animated";
 import { useAuth } from "../Context/AuthContext";
 
 export default function BlogForm() {
-  const { admin } = useAuth(); // 🔐 get authenticated user
+  const { admin } = useAuth();
   const [formData, setFormData] = useState({
     title: "",
     shortDescription: "",
     content: "",
-    categories: "",
-    tags: "",
+    categories: [],
     isPublished: false,
   });
 
+  const [allCategories, setAllCategories] = useState([]);
   const [heroImage, setHeroImage] = useState(null);
   const [message, setMessage] = useState("");
 
@@ -29,6 +31,14 @@ export default function BlogForm() {
     });
   };
 
+  const handleCategoryChange = (selectedOptions) => {
+    const values = selectedOptions.map((opt) => opt.value);
+    setFormData((prev) => ({
+      ...prev,
+      categories: values,
+    }));
+  };
+
   const handleImageChange = (e) => {
     setHeroImage(e.target.files[0]);
   };
@@ -37,7 +47,11 @@ export default function BlogForm() {
     e.preventDefault();
     const form = new FormData();
     for (let key in formData) {
-      form.append(key, formData[key]);
+      if (key === "categories") {
+        formData[key].forEach((cat) => form.append("categories", cat));
+      } else {
+        form.append(key, formData[key]);
+      }
     }
     form.append("heroImage", heroImage);
 
@@ -62,10 +76,25 @@ export default function BlogForm() {
     }
   };
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/blog/categories");
+        const categoryOptions = res.data.categories.map((cat) => ({
+          value: cat,
+          label: cat,
+        }));
+        setAllCategories(categoryOptions);
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 pt-20">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 mt-20">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Create New Blog Post
@@ -75,12 +104,11 @@ export default function BlogForm() {
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <form onSubmit={handleSubmit} className="p-8 space-y-8">
-            {/* Basic Information Section */}
+            {/* Basic Information */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                 Basic Information
               </h2>
-
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -103,7 +131,7 @@ export default function BlogForm() {
                   </label>
                   <textarea
                     name="shortDescription"
-                    placeholder="Brief description of your blog post (max 300 characters)..."
+                    placeholder="Brief description (max 300 characters)..."
                     maxLength={300}
                     rows={3}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 resize-none"
@@ -117,80 +145,61 @@ export default function BlogForm() {
               </div>
             </div>
 
-            {/* Categories and Tags Section */}
+            {/* Categories */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
-                Organization
+                Categories
               </h2>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Categories
-                  </label>
-                  <input
-                    type="text"
-                    name="categories"
-                    placeholder="e.g., Technology, Web Development"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
-                    value={formData.categories}
-                    onChange={handleChange}
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Separate multiple categories with commas
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tags
-                  </label>
-                  <input
-                    type="text"
-                    name="tags"
-                    placeholder="e.g., React, JavaScript, Tutorial"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
-                    value={formData.tags}
-                    onChange={handleChange}
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Separate multiple tags with commas
-                  </p>
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Select or Add Categories
+                </label>
+                <CreatableSelect
+                  isMulti
+                  components={makeAnimated()}
+                  options={allCategories}
+                  onChange={handleCategoryChange}
+                  value={formData.categories.map((cat) => ({
+                    label: cat,
+                    value: cat,
+                  }))}
+                  placeholder="Start typing to select or add..."
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Type to search or add a new category.
+                </p>
               </div>
             </div>
 
-            {/* Hero Image Section */}
+            {/* Hero Image */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                 Featured Image
               </h2>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Upload Featured Image *
                 </label>
-                <div className="relative">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
-                  />
-                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+                />
                 <p className="text-xs text-gray-500 mt-1">
                   Recommended size: 1200x630 pixels (JPG, PNG)
                 </p>
               </div>
             </div>
 
-            {/* Content Section */}
+            {/* Content */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                 Content
               </h2>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Blog Content
@@ -209,9 +218,11 @@ export default function BlogForm() {
                         "insertdatetime media table paste code help wordcount",
                       ],
                       toolbar:
-                        "undo redo | formatselect | bold italic underline | \
-                        alignleft aligncenter alignright alignjustify | \
-                        bullist numlist outdent indent | removeformat | help",
+                        "undo redo | blocks | bold italic underline | " +
+                        "alignleft aligncenter alignright alignjustify | " +
+                        "bullist numlist outdent indent | removeformat | help",
+                      block_formats:
+                        "Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6",
                     }}
                     onEditorChange={handleEditorChange}
                   />
@@ -219,12 +230,11 @@ export default function BlogForm() {
               </div>
             </div>
 
-            {/* Publishing Options */}
+            {/* Publishing */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                 Publishing Options
               </h2>
-
               <div className="flex items-center">
                 <label className="flex items-center cursor-pointer">
                   <input
@@ -239,13 +249,10 @@ export default function BlogForm() {
                   </span>
                 </label>
               </div>
-              <p className="text-xs text-gray-500">
-                Uncheck to save as draft. You can publish it later from your
-                dashboard.
-              </p>
+              <p className="text-xs text-gray-500">Uncheck to save as draft.</p>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="pt-6 border-t border-gray-200">
               <div className="flex justify-end">
                 <button
@@ -259,7 +266,7 @@ export default function BlogForm() {
           </form>
         </div>
 
-        {/* Message Display */}
+        {/* Message */}
         {message && (
           <div
             className={`mt-6 p-4 rounded-lg ${

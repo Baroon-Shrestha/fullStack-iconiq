@@ -20,7 +20,7 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-[60vh] md:min-h-[80vh] overflow-hidden rounded-4xl flex flex-col justify-end text-white">
+    <div className="relative w-full min-h-[60vh] md:min-h-[80vh] overflow-hidden rounded-b-4xl flex flex-col justify-end text-white">
       {/* Background Carousel */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -35,7 +35,7 @@ export default function AboutHero() {
       </AnimatePresence>
 
       {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-4xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pb-16">

@@ -23,11 +23,7 @@ const saveSessionInfo = async (req, res) => {
       return res.status(200).json({ message: "Session already exists." });
     }
 
-    const newSession = new SessionInfo({
-      sessionId,
-      username: username || sessionId,
-    });
-
+    const newSession = new SessionInfo({ sessionId, username });
     await newSession.save();
 
     res.status(201).json({ message: "Session info saved successfully." });

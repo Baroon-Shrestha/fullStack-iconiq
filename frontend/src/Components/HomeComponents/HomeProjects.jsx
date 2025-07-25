@@ -68,17 +68,17 @@ export default function HomeProjects() {
   }, []);
 
   return (
-    <div className="w-full bg-gray-50">
-      <div className="container mx-auto px-4 pt-12 md:pt-10">
+    <div className="w-full bg-gray-50 ">
+      <div className="container mx-auto px-4 pt-12 md:py-20">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl font-extrabold text-gray-800">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-gray-800">
             Our{" "}
-            <span className="bg-gradient-to-b from-[#C848C1] to-[#54A6F9] text-transparent bg-clip-text">
+            <span className="bg-gradient-to-b from-[#C848C1] to-[#54A6F9] text-transparent bg-clip-text logo">
               Projects
             </span>
           </h2>
