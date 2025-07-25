@@ -5,11 +5,11 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchAdmin = async () => {
       try {
-        const res = await axios.get(`${API_URL}/admin/me`, {
+        const res = await axios.get("http://localhost:3000/admin/me", {
           withCredentials: true,
         });
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        `${API_URL}/admin/logout`,
+        "http://localhost:3000/admin/logout",
         {},
         {
           withCredentials: true,

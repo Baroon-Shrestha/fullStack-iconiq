@@ -36,14 +36,13 @@ export default function Blogs() {
   const [categories, setCategories] = useState(["All"]);
   const navigate = useNavigate();
   const { admin } = useAuth();
-  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const endpoint = admin
-          ? `${API_URL}/blog/all-blog`
-          : `${API_URL}/blog/blogs`;
+          ? "http://localhost:3000/blog/all-blogs"
+          : "http://localhost:3000/blog/blogs";
         const res = await axios.get(endpoint, { withCredentials: true });
         setBlogs(res.data.blogs || []);
         setFilteredBlogs(res.data.blogs || []);
@@ -54,7 +53,7 @@ export default function Blogs() {
 
     const fetchCategories = async () => {
       try {
-        const res = await axios.get(`${API_URL}/blog/categories`, {
+        const res = await axios.get("http://localhost:3000/blog/categories", {
           withCredentials: true,
         });
         setCategories(["All", ...(res.data.categories || [])]);
@@ -109,7 +108,7 @@ export default function Blogs() {
     setDropdownOpen(null);
     try {
       await axios.patch(
-        `${API_URL}/blog/update-status/${blogId}`,
+        `http://localhost:3000/blog/update-status/${blogId}`,
         { isPublished: !currentStatus },
         { withCredentials: true }
       );
@@ -136,7 +135,7 @@ export default function Blogs() {
 
     if (window.confirm("Are you sure you want to delete this blog?")) {
       try {
-        await axios.delete(`${API_URL}/blog/delete/${blogId}`, {
+        await axios.delete(`http://localhost:3000/blog/delete/${blogId}`, {
           withCredentials: true,
         });
 

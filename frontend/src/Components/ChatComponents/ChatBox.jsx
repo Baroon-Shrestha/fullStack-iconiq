@@ -19,10 +19,10 @@ export default function ChatBox() {
   const [text, setText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     axios
-      .get(`${API_URL}/admin/usernames`, { withCredentials: true })
+      .get("http://localhost:3000/admin/usernames", { withCredentials: true })
       .then((res) => setSessions(res.data))
       .catch((err) => console.error("Failed to fetch usernames", err));
   }, []);
@@ -31,7 +31,7 @@ export default function ChatBox() {
     if (!selectedSession) return;
 
     axios
-      .get(`${API_URL}/admin/session/${selectedSession}`)
+      .get(`http://localhost:3000/admin/session/${selectedSession}`)
       .then((res) =>
         setAllMessages((prev) => ({
           ...prev,

@@ -17,7 +17,7 @@ export default function LoginDialog({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
-  const API_URL = import.meta.env.VITE_API_URL;
+
   const login = async () => {
     if (!username.trim() || !password.trim()) {
       setError("Please fill in all fields");
@@ -30,7 +30,7 @@ export default function LoginDialog({ onLogin }) {
     try {
       // Simulate API call - replace with your actual axios call
       const res = await axios.post(
-        `${API_URL}/admin/login`,
+        "http://localhost:3000/admin/login",
         { username, password },
         { withCredentials: true }
       );

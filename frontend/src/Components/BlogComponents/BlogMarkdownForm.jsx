@@ -18,7 +18,6 @@ export default function BlogForm() {
   const [allCategories, setAllCategories] = useState([]);
   const [heroImage, setHeroImage] = useState(null);
   const [message, setMessage] = useState("");
-  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleEditorChange = (content) => {
     setFormData((prev) => ({ ...prev, content }));
@@ -61,12 +60,16 @@ export default function BlogForm() {
     }
 
     try {
-      const res = await axios.post(`${API_URL}/blog/post-blog`, form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "http://localhost:3000/blog/post-blog",
+        form,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
       setMessage(res.data.message || "Blog submitted.");
     } catch (err) {
       setMessage(err.response?.data?.message || "Submission failed.");
@@ -76,7 +79,7 @@ export default function BlogForm() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get(`${API_URL}/blog/categories`);
+        const res = await axios.get("http://localhost:3000/blog/categories");
         const categoryOptions = res.data.categories.map((cat) => ({
           value: cat,
           label: cat,
