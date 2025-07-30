@@ -1,7 +1,7 @@
 // components/ProtectedRoute.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../Components/Context/AuthContext";
+import { useAuth } from "../Components/Context/useAuth";
 
 export default function AdminRoutes({ children }) {
   const { admin, loading } = useAuth();

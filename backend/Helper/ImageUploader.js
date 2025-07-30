@@ -6,6 +6,7 @@ const uploadImages = async (images) => {
     "image/jpeg",
     "image/jpg",
     "image/webp",
+    "image/avif",
   ];
 
   const imageArray = Array.isArray(images) ? images : [images];

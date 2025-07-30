@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useAuth } from "../Context/AuthContext";
+
 import { useNavigate } from "react-router-dom"; // ← import
+import api from "../Utils/api";
+import { useAuth } from "../Context/useAuth";
 
 export default function AdminLogin() {
   const { admin, login, logout } = useAuth(); // use global auth state
@@ -18,8 +20,8 @@ export default function AdminLogin() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/admin/login",
+      const response = await api.post(
+        "/login",
         { username, password },
         { withCredentials: true }
       );

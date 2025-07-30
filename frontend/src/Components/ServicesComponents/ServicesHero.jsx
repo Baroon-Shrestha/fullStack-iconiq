@@ -75,7 +75,7 @@ export default function ServicesHero() {
     if (isPlaying && !transitionRef.current) {
       interval = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 4000);
 
       progressInterval = setInterval(() => {
         setProgress((prev) => {

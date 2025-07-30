@@ -3,7 +3,9 @@ import axios from "axios";
 import { Editor } from "@tinymce/tinymce-react";
 import CreatableSelect from "react-select/creatable";
 import makeAnimated from "react-select/animated";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../Context/useAuth";
+import api from "../Utils/api";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogForm() {
   const { admin } = useAuth();
@@ -13,7 +15,9 @@ export default function BlogForm() {
     content: "",
     categories: [],
     isPublished: false,
+    isFeatured: false,
   });
+  const navigate = useNavigate();
 
   const [allCategories, setAllCategories] = useState([]);
   const [heroImage, setHeroImage] = useState(null);
@@ -60,17 +64,14 @@ export default function BlogForm() {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:3000/blog/post-blog",
-        form,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await api.post("/post-blog", form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
       setMessage(res.data.message || "Blog submitted.");
+      navigate("/blog");
     } catch (err) {
       setMessage(err.response?.data?.message || "Submission failed.");
     }
@@ -79,7 +80,7 @@ export default function BlogForm() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/blog/categories");
+        const res = await api.get("/categories");
         const categoryOptions = res.data.categories.map((cat) => ({
           value: cat,
           label: cat,
@@ -94,7 +95,7 @@ export default function BlogForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 mt-20">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Create New Blog Post
@@ -202,7 +203,7 @@ export default function BlogForm() {
               </h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Blog Content
+                  Blog Description
                 </label>
                 <div className="border border-gray-300 rounded-lg overflow-hidden">
                   <Editor
@@ -210,7 +211,7 @@ export default function BlogForm() {
                     initialValue=""
                     value={formData.content}
                     init={{
-                      height: 400,
+                      height: 500,
                       menubar: false,
                       plugins: [
                         "advlist autolink lists link image charmap preview anchor",
@@ -230,13 +231,14 @@ export default function BlogForm() {
               </div>
             </div>
 
+            <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+              Publishing Options
+            </h2>
             {/* Publishing */}
-            <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
-                Publishing Options
-              </h2>
-              <div className="flex items-center">
-                <label className="flex items-center cursor-pointer">
+            <div className="flex flex-col gap-y-4 sm:flex-row sm:items-start sm:gap-x-10">
+              {/* Publish Immediately */}
+              <div className="flex-1">
+                <label className="flex items-center space-x-3 cursor-pointer">
                   <input
                     type="checkbox"
                     name="isPublished"
@@ -244,12 +246,33 @@ export default function BlogForm() {
                     onChange={handleChange}
                     className="w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-2 focus:ring-purple-500"
                   />
-                  <span className="ml-3 text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700">
                     Publish immediately
                   </span>
                 </label>
+                <p className="text-xs text-gray-500 mt-1">
+                  Uncheck to save as draft.
+                </p>
               </div>
-              <p className="text-xs text-gray-500">Uncheck to save as draft.</p>
+
+              {/* Mark as Featured */}
+              <div className="flex-1">
+                <label className="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="isFeatured"
+                    checked={formData.isFeatured}
+                    onChange={handleChange}
+                    className="w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-2 focus:ring-purple-500"
+                  />
+                  <span className="text-sm font-medium text-gray-700">
+                    Mark as Featured
+                  </span>
+                </label>
+                <p className="text-xs text-gray-500 mt-1">
+                  Featured blogs will be shown in a special section.
+                </p>
+              </div>
             </div>
 
             {/* Submit */}

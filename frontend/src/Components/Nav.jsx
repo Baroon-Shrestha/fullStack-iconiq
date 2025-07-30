@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "./Context/AuthContext";
+import { useAuth } from "./Context/useAuth";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);

@@ -22,6 +22,7 @@ const blogSchema = new mongoose.Schema(
       url: { type: String, required: true },
     },
     isPublished: { type: Boolean, default: false },
+    isFeatured: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

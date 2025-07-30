@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+// src/Components/Context/AuthContext.jsx
+import { createContext, useEffect, useState } from "react";
+import api from "../Utils/api";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,10 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchAdmin = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/admin/me", {
-          withCredentials: true,
-        });
-
+        const res = await api.get("/me", { withCredentials: true });
         setAdmin(res.data);
       } catch (err) {
         setAdmin(null);
@@ -24,19 +23,11 @@ export const AuthProvider = ({ children }) => {
     fetchAdmin();
   }, []);
 
-  const login = (userData) => {
-    setAdmin(userData);
-  };
+  const login = (userData) => setAdmin(userData);
 
   const logout = async () => {
     try {
-      await axios.post(
-        "http://localhost:3000/admin/logout",
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      await api.post("/logout", {}, { withCredentials: true });
     } catch (err) {
       console.error("Logout error:", err);
     } finally {
@@ -50,6 +41,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-// Custom hook
-export const useAuth = () => useContext(AuthContext);

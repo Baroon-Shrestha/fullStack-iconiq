@@ -8,7 +8,8 @@ import {
   Shield,
   CheckCircle,
 } from "lucide-react";
-import axios from "axios";
+
+import api from "../Utils/api";
 
 export default function LoginDialog({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -28,9 +29,8 @@ export default function LoginDialog({ onLogin }) {
     setError("");
 
     try {
-      // Simulate API call - replace with your actual axios call
-      const res = await axios.post(
-        "http://localhost:3000/admin/login",
+      const res = await api.post(
+        "/login",
         { username, password },
         { withCredentials: true }
       );

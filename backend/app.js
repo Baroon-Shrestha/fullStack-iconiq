@@ -35,6 +35,6 @@ app.use("/admin", loginRoutes);
 app.use("/admin", chatRoutes);
 app.use("/admin", sessionRoutes);
 
-app.use("/blog", blogRoutes);
+app.use("/admin", blogRoutes);
 
 module.exports = app;

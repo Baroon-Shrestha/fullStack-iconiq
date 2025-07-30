@@ -7,21 +7,21 @@ const initialCards = [
     subtitle: "Design • Development",
     description:
       "We crafted a high-conversion fashion e-commerce site with a custom user experience, seamless checkout, and integrated SEO strategies.",
-    bgImage: "/Uploads/services.jpg",
+    bgImage: "/Uploads/newWork.jpeg",
   },
   {
     title: "Social Media Growth Campaign",
     subtitle: "Instagram • Reels • Ads",
     description:
       "Our reels and motion graphics content helped a local brand triple its engagement, gaining over 15K organic followers in 3 months.",
-    bgImage: "/Uploads/services3.jpg",
+    bgImage: "/Uploads/newWork2.jpeg",
   },
   {
     title: "Brand Identity for Startups",
     subtitle: "Logo • Visuals",
     description:
       "We delivered a complete branding kit including logo, color palette, and social assets—helping the startup stand out in a crowded market.",
-    bgImage: "/Uploads/services4.png",
+    bgImage: "/Uploads/newWork3.jpeg",
   },
   {
     title: "Poster and Motion Graphics",
@@ -75,7 +75,7 @@ export default function ProjectsHero() {
     if (isPlaying && !transitionRef.current) {
       interval = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 4000);
 
       progressInterval = setInterval(() => {
         setProgress((prev) => {

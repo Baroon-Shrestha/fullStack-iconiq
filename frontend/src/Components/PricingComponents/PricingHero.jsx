@@ -2,7 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PricingHero() {
-  const backgroundImage = "Uploads/pricing.jpg";
+  const backgroundImage = "Uploads/newPricing.jpg";
 
   return (
     <div className="relative min-h-[60vh] md:min-h-[80vh]  flex flex-col justify-end rounded-b-4xl text-white overflow-hidden shadow-2xl shadow-slate-500">

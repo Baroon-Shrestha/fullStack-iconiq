@@ -36,10 +36,11 @@ const avatarData = [
 
 // Carousel images
 const carouselImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
-  "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
-  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
+  "https://images.unsplash.com/photo-1523958203904-cdcb402031fd?w=1600&h=900&fit=crop&auto=format&q=95",
+  "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=1600&h=900&fit=crop&auto=format&q=95",
+  "https://images.unsplash.com/photo-1523958203904-cdcb402031fd?w=1600&h=900&fit=crop&auto=format&q=95",
+  "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=1600&h=900&fit=crop&auto=format&q=95",
+  "https://images.unsplash.com/photo-1523958203904-cdcb402031fd?w=1600&h=900&fit=crop&auto=format&q=95",
 ];
 
 export default function HeroSection3() {
@@ -104,8 +105,6 @@ export default function HeroSection3() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Set initial animation as complete after all avatars have animated in
-  // This should only run ONCE when component mounts
   useEffect(() => {
     if (!hasAnimated.current) {
       const timer = setTimeout(() => {

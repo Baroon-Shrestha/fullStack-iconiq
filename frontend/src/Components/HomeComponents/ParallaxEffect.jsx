@@ -42,7 +42,7 @@ export default function ParallaxEffect() {
     <>
       {/* Parallax Container with dynamic height */}
       <div
-        className="relative"
+        className="relative pt-[25r]"
         ref={containerRef}
         style={{ height: `${totalHeight}px` }}
       >

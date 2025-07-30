@@ -14,7 +14,6 @@ import { Toaster } from "react-hot-toast";
 import Chat2 from "./Components/ChatComponents/Chat2";
 import ChatPage from "./Pages/ChatPage";
 
-import axios from "axios";
 import AdminPanel from "./Components/ChatComponents/AdminPanel";
 import LoginDialog from "./Components/ChatComponents/LoginDialog";
 import AdminRoutes from "./Routes/AdminRoutes";
@@ -22,16 +21,29 @@ import BlogPage from "./Pages/BlogPage";
 import BlogDescription from "./Components/BlogComponents/BlogDescription";
 import BlogMarkdownForm from "./Components/BlogComponents/BlogMarkdownForm";
 import Policy from "./Pages/Policy";
-import { useAuth } from "./Components/Context/AuthContext";
+
+import api from "./Components/Utils/api";
+import { useAuth } from "./Components/Context/useAuth";
+import BlogUpdateForm from "./Components/BlogComponents/BlogUpdateForm";
+import Terms from "./Pages/Terms";
+import NotFound from "./Components/HelperComponents/NotFound";
 
 export default function App() {
   const [adminState, setAdminState] = useState(null);
-  const { admin } = useAuth(); // ✅ get admin from AuthContext
+  const { admin } = useAuth();
   const location = useLocation();
 
+  // Hide Nav and Footer on these paths
+  const hiddenRoutes = ["/chat", "/add", "/admin"];
+  const shouldHideLayout =
+    hiddenRoutes.includes(location.pathname) ||
+    location.pathname.startsWith("/update") ||
+    location.pathname === "/404" ||
+    location.pathname === "*";
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/admin/me`, { withCredentials: true })
+    api
+      .get(`/me`, { withCredentials: true })
       .then((res) => {
         setAdminState(res.data.username);
       })
@@ -41,62 +53,70 @@ export default function App() {
   return (
     <>
       <div className="bg-[#FAF7F0]">
-        <div className="">
-          <Toaster position="top-center" />
-          <ScrollToTop />
+        <Toaster position="top-center" />
+        <ScrollToTop />
 
-          {/* ✅ Render Chat2 only if NOT admin */}
-          {!admin && <Chat2 />}
+        {!admin && <Chat2 />}
 
-          <Nav />
+        {/* Conditionally render Nav */}
+        {!shouldHideLayout && <Nav />}
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/project" element={<Project />} />
-            <Route path="/client" element={<Client />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/policy" element={<Policy />} />
-            <Route path="/blog/:id" element={<BlogDescription />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/client" element={<Client />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/blog/:id" element={<BlogDescription />} />
 
-            <Route
-              path="/add"
-              element={
-                <AdminRoutes>
-                  <BlogMarkdownForm />
-                </AdminRoutes>
-              }
-            />
+          <Route
+            path="/add"
+            element={
+              <AdminRoutes>
+                <BlogMarkdownForm />
+              </AdminRoutes>
+            }
+          />
+          <Route
+            path="/update/:blogId"
+            element={
+              <AdminRoutes>
+                <BlogUpdateForm />
+              </AdminRoutes>
+            }
+          />
 
-            {/* {location.pathname !== "/add" && } */}
+          <Route
+            path="/chat"
+            element={
+              <AdminRoutes>
+                <ChatPage />
+              </AdminRoutes>
+            }
+          />
 
-            <Route
-              path="/chat"
-              element={
-                <AdminRoutes>
-                  <ChatPage />
-                </AdminRoutes>
-              }
-            />
+          <Route
+            path="/admin"
+            element={
+              adminState ? (
+                <AdminPanel />
+              ) : (
+                <LoginDialog onLogin={setAdminState} />
+              )
+            }
+          />
 
-            <Route
-              path="/admin"
-              element={
-                adminState ? (
-                  <AdminPanel />
-                ) : (
-                  <LoginDialog onLogin={setAdminState} />
-                )
-              }
-            />
-          </Routes>
-          {!["/chat", "/add", "/admin"].includes(location.pathname) && (
-            <Footer />
-          )}
-        </div>
+          {/* Not Found Page */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        {/* Conditionally render Footer */}
+        {!shouldHideLayout && <Footer />}
       </div>
     </>
   );

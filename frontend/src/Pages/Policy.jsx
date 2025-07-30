@@ -2,88 +2,84 @@ import React from "react";
 
 export default function Policy() {
   return (
-    <div className="bg-white text-gray-800 py-12 px-4 sm:px-10 lg:px-32 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6 text-blue-700">
-        Terms & Policies
-      </h1>
-
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">1. Introduction</h2>
-        <p className="text-gray-600">
-          Welcome to Iconiq. By accessing or using our services, you agree to
-          comply with the following Terms and Policies. Please read them
-          carefully.
+    <div className="min-h-screen px-6 py-[8rem]">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8">
+        <h1 className="text-3xl font-bold mb-6 text-purple-700">
+          Privacy Policy – Iconiq
+        </h1>
+        <p className="mb-4 text-gray-700">
+          At Iconiq, your privacy is a top priority. This policy outlines how we
+          collect, use, and protect your information when you interact with our
+          digital services.
         </p>
-      </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">
-          2. User Responsibilities
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">
+          1. What We Do
         </h2>
-        <ul className="list-disc list-inside text-gray-600 space-y-1">
-          <li>
-            You must provide accurate information when creating an account or
-            filling forms.
-          </li>
-          <li>
-            Unauthorized access or use of the platform is strictly prohibited.
-          </li>
-          <li>
-            Users must not distribute harmful, illegal, or offensive content.
-          </li>
+        <ul className="list-disc ml-6 text-gray-600 mt-2 space-y-1">
+          <li>Digital Branding Solutions</li>
+          <li>Creative Web Design</li>
+          <li>Full-Stack Web Development</li>
+          <li>Custom Poster and Graphic Design</li>
+          <li>Visual Identity & UI/UX Design</li>
         </ul>
-      </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">3. Data Privacy</h2>
-        <p className="text-gray-600">
-          Iconiq values your privacy. All user data is securely stored and will
-          not be shared with third parties without consent. You may request
-          deletion of your data at any time.
-        </p>
-      </section>
-
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">
-          4. Intellectual Property
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">
+          2. Information We Collect
         </h2>
-        <p className="text-gray-600">
-          All content, branding, and designs used on the Iconiq platform are the
-          intellectual property of Iconiq and are protected by copyright laws.
+        <p className="text-gray-600 mt-2">
+          We may collect personal details like your name, email address, and
+          project requirements when you:
         </p>
-      </section>
+        <ul className="list-disc ml-6 text-gray-600 mt-2 space-y-1">
+          <li>Fill out a contact form</li>
+          <li>Sign up for a newsletter</li>
+          <li>Request a quote or service</li>
+        </ul>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">5. Payment & Refunds</h2>
-        <p className="text-gray-600">
-          All transactions made through Iconiq are final. Refunds are subject to
-          specific service-level agreements and must be formally requested with
-          justification.
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">
+          3. How We Use Your Information
+        </h2>
+        <p className="text-gray-600 mt-2">We use your information to:</p>
+        <ul className="list-disc ml-6 text-gray-600 mt-2 space-y-1">
+          <li>Communicate project updates and support</li>
+          <li>Deliver the services you request</li>
+          <li>Send occasional marketing updates (you can opt out anytime)</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">
+          4. Data Protection
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Your data is securely stored and never sold to third parties. We
+          follow industry best practices for encryption and access control.
         </p>
-      </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-2">6. Modifications</h2>
-        <p className="text-gray-600">
-          Iconiq reserves the right to update these Terms and Policies at any
-          time. Continued use of the platform after changes implies acceptance.
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">5. Cookies</h2>
+        <p className="text-gray-600 mt-2">
+          We use cookies to enhance your browsing experience. You can disable
+          them in your browser settings.
         </p>
-      </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-2">7. Contact</h2>
-        <p className="text-gray-600">
-          If you have any questions regarding our terms and policies, feel free
-          to reach out to us at{" "}
+        <h2 className="text-xl font-semibold mt-6 text-gray-800">
+          6. Updates to this Policy
+        </h2>
+        <p className="text-gray-600 mt-2">
+          This policy may be updated as we expand our services. Changes will be
+          reflected here.
+        </p>
+
+        <p className="mt-6 text-gray-500 text-sm">
+          For any questions or concerns, contact us at{" "}
           <a
-            href="mailto:support@iconiq.com"
-            className="text-blue-600 underline"
+            href="mailto:iconiqnp@gmail.com"
+            className="text-blue-500 underline"
           >
-            support@iconiq.com
+            iconiqnp@gmail.com
           </a>
           .
         </p>
-      </section>
+      </div>
     </div>
   );
 }

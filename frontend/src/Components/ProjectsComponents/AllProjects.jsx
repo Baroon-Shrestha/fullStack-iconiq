@@ -2,17 +2,32 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-const projectsData = [
+export const projectsData = [
   {
     image: "Uploads/momiji2.jpg",
     title: "Momiji International Academy",
-    subtitle: "Japanese Language Center",
+    subtitle: "Japan-Focused Educational Consultancy",
     description:
       "We designed a dedicated platform for Momiji International Academy, a reputed Japanese language institute. The website features course information, an intuitive enrollment system, student resources, and a mobile-friendly design to help students prepare for study and work opportunities in Japan.",
     tags: ["Poster and Motion Graphics", "Mobile Responsive Application"],
     year: "2025",
     height: 400,
     category: ["Websites", "Branding"],
+    longDescription:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit cupiditate repudiandae magnam laudantium officia fuga, debitis iste incidunt neque explicabo in molestiae laborum mollitia voluptatum perferendis totam repellendus non doloremque exercitationem. Quo natus nostrum nam blanditiis officia quibusdam a, eligendi accusantium culpa facilis recusandae in perspiciatis, eius adipisci laborum enim officiis saepe inventore autem ad? Rem ea sapiente quas molestiae, fugit distinctio? Fugit cumque quaerat, repellat molestias iure molestiae, debitis rem exercitationem dolor provident eum, tenetur ad esse accusamus blanditiis incidunt quis reprehenderit enim libero illum accusantium totam similique? Eveniet odio accusamus molestias, sapiente quibusdam aperiam cupiditate explicabo. Sint nobis quam iure, neque, magni quasi ea reprehenderit cumque, non quia tenetur esse odio ad in laborum! Quis molestias voluptas numquam laudantium ducimus magni dicta recusandae pariatur perspiciatis natus harum totam alias obcaecati, itaque voluptatibus officia ratione. Eum non cum accusantium nisi excepturi adipisci nam eveniet illum impedit consectetur reprehenderit voluptatum placeat nihil suscipit, quam fugit at culpa itaque dolorum sapiente! Porro, atque sequi corrupti doloremque rerum aliquam nulla aperiam ab debitis et nobis sed, placeat maiores blanditiis error explicabo nihil ipsam consequatur inventore? Quasi officiis explicabo veniam sequi est quas minima iure corporis ad. Ipsum saepe neque vero, eaque qui beatae, libero delectus, esse nihil tempore asperiores. Inventore cupiditate sapiente cum ad, minus in suscipit? Deleniti suscipit optio hic quod in doloremque iste at ratione nesciunt maxime molestiae odio, quasi voluptatum tempora iure tenetur blanditiis amet expedita quos. Tempore odit laudantium earum in quibusdam quaerat sapiente itaque. Asperiores quibusdam possimus repellendus eius maxime nihil nesciunt reiciendis ducimus, dolorum qui molestiae quis, magni voluptas error optio blanditiis dolores quos enim ipsa! Consequatur eius accusantium nostrum, saepe laboriosam aspernatur cum, asperiores, dolorem dolorum non itaque veniam odit nihil quia? Eius, voluptates. Officia quasi doloribus voluptas fugit quis autem, unde nisi quos iusto.",
+    challenge:
+      "Momiji International Academy lacked a scalable and modern digital presence.",
+    solution:
+      "We developed a responsive platform with a focus on user experience, performance, and accessibility for Momiji International Academy.",
+    result:
+      "Momiji International Academy experienced improved user interaction, higher engagement, and greater online visibility.",
+    mediaAssets: [
+      "Uploads/img3.jpeg",
+      "Uploads/img1.jpeg",
+      "Uploads/kings.png",
+      "Uploads/momiji2.png",
+      "Uploads/video2.mp4",
+    ],
   },
   {
     image: "Uploads/kansai.png",
@@ -24,28 +39,67 @@ const projectsData = [
     year: "2025",
     height: 500,
     category: "Websites",
+    longDescription:
+      "This extended description elaborates how we helped Kansai International Japanese Language Center grow its digital presence using tailored design and technology solutions.",
+    challenge:
+      "Kansai International Japanese Language Center lacked a scalable and modern digital presence.",
+    solution:
+      "We developed a responsive platform with a focus on user experience, performance, and accessibility for Kansai International Japanese Language Center.",
+    result:
+      "Kansai International Japanese Language Center experienced improved user interaction, higher engagement, and greater online visibility.",
+    mediaAssets: [
+      "Uploads/kansai_1.jpg",
+      "Uploads/kansai_2.png",
+      "Uploads/kansai_demo.mp4",
+    ],
   },
   {
     image: "Uploads/kings.png",
     title: "King Motors Pvt. Ltd",
-    subtitle: "Reconditioned Cars Showroom",
+    subtitle: "Premimum Cars Showroom",
     description:
       "We built a powerful web platform for King Motors Pvt. Ltd, enabling them to list their reconditioned car inventory with full specs, real-time updates, and customer support. The platform includes a search and filter system to improve browsing, making the car-buying process smoother for users.",
     tags: ["Inventory Management System", "E-commerce", "Poster Design"],
     year: "2025",
     height: 350,
     category: "Websites",
+    longDescription:
+      "This extended description elaborates how we helped King Motors Pvt. Ltd grow its digital presence using tailored design and technology solutions.",
+    challenge:
+      "King Motors Pvt. Ltd lacked a scalable and modern digital presence.",
+    solution:
+      "We developed a responsive platform with a focus on user experience, performance, and accessibility for King Motors Pvt. Ltd.",
+    result:
+      "King Motors Pvt. Ltd experienced improved user interaction, higher engagement, and greater online visibility.",
+    mediaAssets: [
+      "Uploads/king_1.jpg",
+      "Uploads/king_2.png",
+      "Uploads/king_demo.mp4",
+    ],
   },
   {
     image: "Uploads/ns.jpg",
     title: "NS Automobile Pvt. Ltd",
-    subtitle: "Reconditioned Cars Showroom",
+    subtitle: "Certified Auto Dealership – New & Pre-Owned",
     description:
       "For NS Automobile Pvt. Ltd, a leading reconditioned car showroom, we delivered a comprehensive digital presence through strategic digital marketing campaigns, visually engaging posters, motion graphics content, and cohesive branding solutions. Our work enhanced their brand visibility and positioned them more competitively in the automotive retail market.",
     tags: ["Poster Design", "Digital Marketing", "Motion Graphics", "Branding"],
     year: "2025",
     height: 350,
     category: ["Branding"],
+    longDescription:
+      "This extended description elaborates how we helped NS Automobile Pvt. Ltd grow its digital presence using tailored design and technology solutions.",
+    challenge:
+      "NS Automobile Pvt. Ltd lacked a scalable and modern digital presence.",
+    solution:
+      "We developed a responsive platform with a focus on user experience, performance, and accessibility for NS Automobile Pvt. Ltd.",
+    result:
+      "NS Automobile Pvt. Ltd experienced improved user interaction, higher engagement, and greater online visibility.",
+    mediaAssets: [
+      "Uploads/ns_1.jpg",
+      "Uploads/ns_2.png",
+      "Uploads/ns_demo.mp4",
+    ],
   },
   {
     image: "Uploads/doller.jpg",
@@ -57,17 +111,42 @@ const projectsData = [
     year: "2025",
     height: 450,
     category: "Websites",
+    longDescription:
+      "This extended description elaborates how we helped Doller Sewa grow its digital presence using tailored design and technology solutions.",
+    challenge: "Doller Sewa lacked a scalable and modern digital presence.",
+    solution:
+      "We developed a responsive platform with a focus on user experience, performance, and accessibility for Doller Sewa.",
+    result:
+      "Doller Sewa experienced improved user interaction, higher engagement, and greater online visibility.",
+    mediaAssets: [
+      "Uploads/doller_1.jpg",
+      "Uploads/doller_2.png",
+      "Uploads/doller_demo.mp4",
+    ],
   },
   {
     image: "Uploads/omni2.png",
     title: "Omni Global International Educational Consultancy",
-    subtitle: "Japanese-Focused Educational Consultancy",
+    subtitle: "Educational Consultancy",
     description:
       "Omni Global offers expert guidance for students aiming to study in Japan. We developed a consultancy platform that simplifies the process of university selection, application, visa processing, and document submission. The website is fully mobile-optimized and includes a content management dashboard for easy updates.",
     tags: ["Mobile Responsive Application"],
     year: "2025",
     height: 380,
     category: "Websites",
+    longDescription:
+      "This extended description elaborates how we helped Omni Global Consultancy establish a smooth digital onboarding experience for students planning to study in Japan.",
+    challenge:
+      "Omni Global lacked a centralized digital platform for guiding students through the consultation and application process.",
+    solution:
+      "We delivered a mobile-optimized website with user-friendly content management and step-by-step guidance workflows.",
+    result:
+      "Omni Global observed improved inquiry rates and better engagement across all student touchpoints.",
+    mediaAssets: [
+      "Uploads/omni_1.jpg",
+      "Uploads/omni_2.png",
+      "Uploads/omni_demo.mp4",
+    ],
   },
   {
     image: "Uploads/ghar.jpg",
@@ -79,28 +158,67 @@ const projectsData = [
     year: "2025",
     height: 380,
     category: "Designing",
+    longDescription:
+      "This extended description outlines how we helped Ghar Sansar create a professional and scalable digital commerce experience for home and lifestyle products.",
+    challenge:
+      "Ghar Sansar faced limitations selling their products without a proper e-commerce presence.",
+    solution:
+      "We developed a responsive e-commerce site with product filtering, easy ordering, and mobile-first design.",
+    result:
+      "Ghar Sansar experienced growth in online orders and reduced dependency on physical foot traffic.",
+    mediaAssets: [
+      "Uploads/ghar_1.jpg",
+      "Uploads/ghar_2.png",
+      "Uploads/ghar_demo.mp4",
+    ],
   },
   {
     image: "Uploads/nisani.jpg",
     title: "Nisani Educational Consultancy Pvt. Ltd",
-    subtitle: "Study in Japan Specialist",
+    subtitle: "Japan-Focused Educational Consultancy",
     description:
       "Nisani Educational Consultancy specializes in helping students navigate the Japanese education system. Our team created a clean, accessible platform showcasing available language programs, university guidance, document checklists, and a contact system for one-on-one counseling support.",
     tags: ["Poster and Motion Graphics", "Mobile Responsive Application"],
     year: "2025",
     height: 380,
     category: "Websites",
+    longDescription:
+      "We supported Nisani Consultancy with a visually clear, mobile-friendly education portal tailored to students interested in Japan-based learning.",
+    challenge:
+      "They lacked a comprehensive website to communicate their services and application processes clearly.",
+    solution:
+      "We delivered a responsive, easily navigable platform with downloadable forms, language program details, and contact options.",
+    result:
+      "Nisani experienced increased student registrations and more streamlined inquiries.",
+    mediaAssets: [
+      "Uploads/nisani_1.jpg",
+      "Uploads/nisani_2.png",
+      "Uploads/nisani_demo.mp4",
+    ],
   },
   {
     image: "Uploads/sanskar.jpg",
     title: "Sanskar Academy",
-    subtitle: "Japan-Focused Consultancy & Training Center",
+    subtitle: "Vastu Related Classes & Training Center",
     description:
-      "We created a modern web presence for Sanskar Academy, a consultancy helping students pursue higher studies and training programs in Japan. The platform includes visual storytelling through posters and motion content, along with informative sections on Japanese culture, language courses, and visa steps.",
+      "We created a modern digital presence for Sanskar Academy, a consultancy helping students pursue higher studies and training programs in Japan. The platform includes visual storytelling through posters and motion content, along with informative sections on Japanese culture, language courses, and visa steps.",
     tags: ["Poster and Graphics Design", "Ads and Motion Graphics"],
     year: "2025",
     height: 380,
     category: "Designing",
+    longDescription:
+      "Sanskar Academy approached us to revamp their brand identity digitally with a strong visual narrative and easy-to-access information.",
+    challenge:
+      "Their existing platform lacked visual consistency and failed to attract modern learners.",
+    solution:
+      "We delivered a vibrant UI with animated motion assets, structured training details, and CTA-driven layouts.",
+    result:
+      "Sanskar Academy witnessed better lead generation and stronger brand recall among students and parents.",
+    mediaAssets: [
+      "Uploads/sanskar_1.jpg",
+      "Uploads/sanskar_2.png",
+      "Uploads/sanskar_demo.mp4",
+    ],
   },
   {
     image: "Uploads/namodebi.jpg",
@@ -112,6 +230,19 @@ const projectsData = [
     year: "2025",
     height: 380,
     category: "Websites",
+    longDescription:
+      "To elevate their online presence, Navadebi Jewellers wanted a polished digital showcase of their gold and diamond collections.",
+    challenge:
+      "They lacked a compelling platform to attract younger digital-native buyers.",
+    solution:
+      "We crafted a modern gallery-first website with booking forms, inquiry options, and performance optimization for mobile.",
+    result:
+      "Navadebi Jewellers saw a noticeable rise in product inquiries and client walk-ins through online appointments.",
+    mediaAssets: [
+      "Uploads/navadebi_1.jpg",
+      "Uploads/navadebi_2.png",
+      "Uploads/navadebi_demo.mp4",
+    ],
   },
 ];
 
@@ -138,7 +269,7 @@ function Cursor({ isVisible, position, text }) {
 function ProjectCard({ project, index, onHover, onLeave, onClick }) {
   return (
     <motion.div
-      className="group relative flex flex-col break-inside-avoid mb-6"
+      className="group relative flex flex-col break-inside-avoid mb-12 group"
       layoutId={`card-container-${project.title}`}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -169,12 +300,24 @@ function ProjectCard({ project, index, onHover, onLeave, onClick }) {
         <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
           <div className="flex flex-wrap gap-1 mb-2">
             {project.tags.slice(0, 2).map((tag, tagIndex) => (
-              <span
-                key={tagIndex}
-                className="px-2 py-1 bg-white/20 backdrop-blur-sm text-xs rounded-full"
-              >
-                {tag}
-              </span>
+              <div className="absolute bottom-2 left-6 right-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {project.tags &&
+                    project.tags.slice(0, 2).map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-2 py-1 bg-black/70 backdrop-blur-sm text-xs rounded-full text-white"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                </div>
+                {/* Description */}
+                <p className="text-white text-md font-light leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -186,12 +329,7 @@ function ProjectCard({ project, index, onHover, onLeave, onClick }) {
         >
           {project.title}
         </motion.h3>
-        <motion.p
-          className="text-gray-500 mt-1 text-sm md:text-base"
-          layoutId={`subtitle-${project.title}`}
-        >
-          {project.subtitle}
-        </motion.p>
+        <div className="w-8 h-1 bg-black/40 rounded-full mt-2 transition-all duration-500 ease-in-out group-hover:w-16 group-hover:bg-black"></div>
       </div>
     </motion.div>
   );
@@ -346,12 +484,6 @@ export default function AllProjects() {
 
         {/* Categories */}
         <div className="lg:ml-8">
-          {/* <motion.div
-            className="text-sm text-gray-500 mb-4 uppercase tracking-wider"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          ></motion.div> */}
           <motion.div
             className="space-y-2"
             initial={{ opacity: 0, x: 20 }}
@@ -424,6 +556,7 @@ export default function AllProjects() {
         </motion.div>
       </AnimatePresence>
 
+      {/* Modal */}
       {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
@@ -513,6 +646,7 @@ export default function AllProjects() {
                           </motion.p>
                         </motion.div>
 
+                        {/* Short Description */}
                         <motion.p
                           className="text-base md:text-lg text-gray-200 leading-relaxed"
                           initial={{ opacity: 0, y: 20 }}
@@ -522,13 +656,14 @@ export default function AllProjects() {
                           {selectedProject.description}
                         </motion.p>
 
+                        {/* Tags */}
                         <motion.div
                           className="flex flex-col"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.7, duration: 0.6 }}
                         >
-                          <div className="mb-3">What we Did for them:</div>
+                          {/* <div className="mb-3">What we did:</div> */}
                           <div className="flex items-center gap-2 flex-wrap">
                             {selectedProject.tags.map((tag, tagIndex) => (
                               <motion.span
@@ -549,7 +684,7 @@ export default function AllProjects() {
                   </div>
                 </div>
 
-                {/* Additional Details Section */}
+                {/* Challenge / Solution / Result */}
                 <motion.div
                   className="bg-white/5 backdrop-blur-sm p-6 md:p-8 border-t border-white/10"
                   initial={{ opacity: 0, y: 50 }}
@@ -558,51 +693,119 @@ export default function AllProjects() {
                 >
                   <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-white">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.3, duration: 0.6 }}
-                      >
-                        <h3 className="text-lg font-semibold mb-3 text-purple-400">
-                          Challenge
-                        </h3>
-                        <p className="text-gray-300 text-sm md:text-base">
-                          Creating an innovative solution that pushes the
-                          boundaries of user experience while maintaining
-                          accessibility and performance standards.
-                        </p>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.4, duration: 0.6 }}
-                      >
-                        <h3 className="text-lg font-semibold mb-3 text-blue-400">
-                          Solution
-                        </h3>
-                        <p className="text-gray-300 text-sm md:text-base">
-                          Implemented cutting-edge technologies and design
-                          principles to deliver a seamless, intuitive experience
-                          that exceeds user expectations.
-                        </p>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.5, duration: 0.6 }}
-                      >
-                        <h3 className="text-lg font-semibold mb-3 text-green-400">
-                          Result
-                        </h3>
-                        <p className="text-gray-300 text-sm md:text-base">
-                          Achieved significant improvements in user engagement,
-                          conversion rates, and overall satisfaction while
-                          setting new industry standards.
-                        </p>
-                      </motion.div>
+                      {["challenge", "solution", "result"].map(
+                        (key, i) =>
+                          selectedProject[key] && (
+                            <motion.div
+                              key={key}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{
+                                delay: 1.3 + i * 0.1,
+                                duration: 0.6,
+                              }}
+                            >
+                              <h3
+                                className={`text-lg font-semibold mb-3 ${
+                                  key === "challenge"
+                                    ? "text-purple-400"
+                                    : key === "solution"
+                                    ? "text-blue-400"
+                                    : "text-green-400"
+                                }`}
+                              >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                              </h3>
+                              <p className="text-gray-300 text-sm md:text-base">
+                                {selectedProject[key]}
+                              </p>
+                            </motion.div>
+                          )
+                      )}
                     </div>
                   </div>
                 </motion.div>
+
+                {/* Media Assets Section */}
+                {selectedProject.mediaAssets?.length > 0 && (
+                  <motion.div
+                    className="bg-white/5 backdrop-blur-sm py-10 px-6 md:px-10 border-t border-white/10"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.7, duration: 0.6 }}
+                  >
+                    <motion.div
+                      className="container mx-auto flex flex-col gap-6 mb-12"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.55, duration: 0.6 }}
+                    >
+                      {selectedProject.longDescription && (
+                        <motion.p
+                          className="text-base container md:text-lg text-gray-200 leading-relaxed text-justify"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.55, duration: 0.6 }}
+                        >
+                          {selectedProject.longDescription}
+                        </motion.p>
+                      )}
+
+                      {/* Tags */}
+                      <motion.div
+                        className="flex flex-col"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                      >
+                        <div className="mb-3 text-lg md:text-xl mt-4 font-bold text-white">
+                          What we did:
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {selectedProject.tags.map((tag, tagIndex) => (
+                            <motion.span
+                              key={tagIndex}
+                              className="px-3 py-1 bg-white/10 text-white rounded-full text-sm backdrop-blur-sm border border-white/20"
+                              whileHover={{
+                                scale: 1.05,
+                                backgroundColor: "rgba(255,255,255,0.2)",
+                              }}
+                            >
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                    <div className="max-w-7xl mx-auto">
+                      <h2 className="text-white text-2xl md:text-3xl  font-bold mb-6">
+                        Project Visuals & Media
+                      </h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {selectedProject.mediaAssets.map((media, i) =>
+                          media.endsWith(".mp4") ? (
+                            <video
+                              key={i}
+                              src={media}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              className="rounded-lg w-full h-auto max-h-[300px] object-cover"
+                            />
+                          ) : (
+                            <img
+                              key={i}
+                              src={media}
+                              alt={`media-${i}`}
+                              className="rounded-lg w-full h-auto max-h-[300px] object-cover"
+                            />
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           </>

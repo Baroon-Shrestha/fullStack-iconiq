@@ -157,6 +157,15 @@ export default function ContactForm() {
                     >
                       +977 986-4687572
                     </button>
+                    <button
+                      className="text-white font-medium"
+                      onClick={() => {
+                        navigator.clipboard.writeText("+977 9705337437");
+                        toast.success("Phone number copied to clipboard!");
+                      }}
+                    >
+                      +977 970-5337437
+                    </button>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4 group">
@@ -211,9 +220,6 @@ export default function ContactForm() {
                       {social.icon}
                     </motion.a>
                   ))}
-                </div>
-                <div className="w-42 h-42 mt-6">
-                  <img src="Uploads/QR.png" alt="" className="boject-cover" />
                 </div>
               </motion.div>
             </div>

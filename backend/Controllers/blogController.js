@@ -11,6 +11,7 @@ const postBlog = async (req, res) => {
     shortDescription = "",
     content,
     isPublished = false,
+    isFeatured = false,
   } = req.body;
 
   if (role !== "admin") {
@@ -54,6 +55,7 @@ const postBlog = async (req, res) => {
       content,
       heroImage: uploadedImage, // pick the first if single image
       isPublished,
+      isFeatured,
     });
 
     await newBlog.save();
@@ -206,12 +208,109 @@ const updatePublishStatus = async (req, res) => {
   }
 };
 
+const getFeaturedBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find({ isPublished: true, isFeatured: true }).sort(
+      { createdAt: -1 }
+    );
+    res.status(200).json({ success: true, blogs });
+  } catch (error) {
+    console.error("Error fetching featured blogs:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+const updateFeaturedStatus = async (req, res) => {
+  const { role } = req.user;
+  const { id } = req.params;
+  const { isFeatured } = req.body;
+
+  if (role !== "admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Only admins can update featured status.",
+    });
+  }
+  try {
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found.",
+      });
+    }
+
+    blog.isFeatured = isFeatured;
+    await blog.save();
+
+    return res.status(200).json({
+      success: true,
+      message: `Blog marked as featured blog.`,
+      blog,
+    });
+  } catch (error) {
+    console.error("Error updating publish status:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error while updating publish status.",
+    });
+  }
+};
+
+const updateBlog = async (req, res) => {
+  const { role } = req.user;
+  const { id } = req.params;
+  const { title, categories, shortDescription, content, isFeatured } = req.body;
+
+  if (role !== "admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Only admins can update blogs.",
+    });
+  }
+
+  try {
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found.",
+      });
+    }
+
+    if (title) {
+      blog.title = title;
+      blog.slug = slugify(title, { lower: true, strict: true });
+    }
+    if (categories)
+      blog.categories = Array.isArray(categories) ? categories : [categories];
+    if (shortDescription)
+      blog.shortDescription = shortDescription.slice(0, 300);
+    if (content) blog.content = content;
+    if (typeof isFeatured === "boolean") blog.isFeatured = isFeatured;
+
+    await blog.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Blog updated successfully.",
+      blog,
+    });
+  } catch (error) {
+    console.error("Error updating blog:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
 module.exports = {
   postBlog,
   getAllBlogs,
   getOneBlog,
   deleteBlog,
   getBlogAsAdmin,
+  getFeaturedBlogs,
+  updateFeaturedStatus,
   updatePublishStatus,
   getAllCategories,
+  updateBlog,
 };

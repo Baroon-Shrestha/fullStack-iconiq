@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { socket } from "../../../socket";
+import api from "../Utils/api";
 
 export default function ChatBox() {
   const [sessions, setSessions] = useState([]);
@@ -21,8 +22,8 @@ export default function ChatBox() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/admin/usernames", { withCredentials: true })
+    api
+      .get("/usernames", { withCredentials: true })
       .then((res) => setSessions(res.data))
       .catch((err) => console.error("Failed to fetch usernames", err));
   }, []);
@@ -30,8 +31,8 @@ export default function ChatBox() {
   useEffect(() => {
     if (!selectedSession) return;
 
-    axios
-      .get(`http://localhost:3000/admin/session/${selectedSession}`)
+    api
+      .get(`/session/${selectedSession}`)
       .then((res) =>
         setAllMessages((prev) => ({
           ...prev,

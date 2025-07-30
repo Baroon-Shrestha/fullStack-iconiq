@@ -5,93 +5,97 @@ import Accordion from "../HelperComponents/Accordion";
 const FAQSection = () => {
   const faqData = [
     {
-      question: "What are your core services as a UX design and branding firm?",
+      question: "What kind of digital solutions does Iconiq provide?",
       answer: (
         <div className="space-y-4">
           <p>
-            At Clay, user experience is not just a capability but the
-            cornerstone of our approach. We first began as a UX design agency in
-            San Francisco, focusing on mobile apps and enterprise/SaaS software.
+            At Iconiq, we offer a wide range of digital services tailored to
+            meet modern business needs. Our core offerings include website
+            design and development, digital marketing, branding and identity,
+            custom web applications, and ongoing technical support.
           </p>
           <p>
-            However, our passion for branding and the demand from our clients
-            led us to expand our offering to provide full-service brand design
-            practice and web design and development of marketing websites.
+            Whether you're a startup building your online presence or an
+            established business looking to scale, we help you create meaningful
+            digital experiences that connect with your customers and drive
+            results.
+          </p>
+        </div>
+      ),
+    },
+    {
+      question: "How does Iconiq stand out from other IT solution providers?",
+      answer: (
+        <div className="space-y-4">
+          <p>
+            What makes Iconiq different is our focus on both creativity and
+            technical excellence. We combine beautiful design with strong
+            functionality, ensuring the digital products we deliver are
+            user-friendly, fast, and aligned with your business goals.
           </p>
           <p>
-            Today, our projects encompass a wide range, from building new
-            products and defining brands to revitalizing existing mobile apps,
-            websites, and enterprise software. We specialize in crafting digital
-            products that wholeheartedly embody the brand's personality and
-            deliver delightful experiences to your customers.
-          </p>
-          <p>
-            Our team handles every aspect required to bring a digital product to
-            life. This includes user research, product strategy, branding, user
-            interface and experience design, usability testing, prototyping, web
-            design, and development.
+            We work closely with clients, focusing on real-world challenges, and
+            tailor each project with care rather than using a one-size-fits-all
+            approach.
           </p>
         </div>
       ),
     },
     {
       question:
-        "What separates Clay from other branding and web design agencies?",
+        "Can Iconiq handle projects for clients based in other countries?",
       answer: (
         <div className="space-y-4">
           <p>
-            Clay stands out through our unique combination of deep UX expertise
-            and strategic branding capabilities. Unlike traditional agencies
-            that focus on just one area, we bring together user experience
-            research, brand strategy, and technical implementation under one
-            roof.
+            Yes, absolutely. We work with clients from different countries and
+            time zones with ease. Our team is experienced in handling remote
+            projects through collaborative tools, organized communication, and
+            flexible work hours.
           </p>
           <p>
-            Our approach is data-driven and user-centered, ensuring that every
-            design decision is backed by research and testing. We don't just
-            create beautiful designs - we create solutions that solve real
-            business problems and delight users.
+            Whether you’re in Asia, Europe, or the U.S., we ensure timely
+            updates and maintain a transparent workflow to keep you involved at
+            every stage.
           </p>
         </div>
       ),
     },
     {
-      question: "Do you work with clients in different timezones?",
+      question: "What is the cost of developing a website or app with Iconiq?",
       answer: (
         <div className="space-y-4">
           <p>
-            Yes, we work with clients across different timezones. Our team has
-            experience collaborating with companies globally, and we've
-            developed efficient processes to ensure smooth communication
-            regardless of location.
+            The cost of a project depends on the type, features, and complexity.
+            We offer flexible pricing models — from fixed-cost packages for
+            basic websites to custom quotes for advanced applications or
+            long-term collaborations.
           </p>
           <p>
-            We use modern collaboration tools and establish clear communication
-            schedules that work for all parties involved. Our project management
-            approach is designed to minimize timezone friction while maintaining
-            high-quality deliverables.
+            After an initial discussion, we provide a detailed proposal
+            outlining timelines, costs, and deliverables so you can make an
+            informed decision.
           </p>
         </div>
       ),
     },
     {
-      question: "How much does hiring you for a design project cost?",
+      question: "Does Iconiq work with startups and small businesses?",
       answer: (
         <div className="space-y-4">
           <p>
-            Project costs vary depending on scope, complexity, and timeline. We
-            offer both fixed-price project engagements and ongoing retainer
-            relationships.
+            Yes! We love working with startups and small businesses. Iconiq
+            provides end-to-end support — from branding and digital presence
+            setup to product design and marketing.
           </p>
           <p>
-            During our initial consultation, we'll discuss your specific needs
-            and provide a detailed proposal with transparent pricing. We believe
-            in providing clear value propositions and work within budgets that
-            make sense for your business goals.
+            We understand tight budgets and fast-moving timelines, and we’re
+            happy to adapt our services to fit your needs while still delivering
+            high-quality results.
           </p>
         </div>
       ),
     },
+
     {
       question: "Do you work with startups?",
       answer: (
@@ -124,9 +128,10 @@ const FAQSection = () => {
             )❓
           </h1>
           <p className="text-center text-lg md:text-xl max-w-3xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-            obcaecati pariatur magnam temporibus ad dignissimos alias sapiente
-            omnis, quo earum.
+            Got questions about how Iconiq can support your business? Here are
+            some common queries from our clients to help you better understand
+            our digital services, process, and what to expect when working with
+            us.
           </p>
         </div>
         <Accordion items={faqData} />
