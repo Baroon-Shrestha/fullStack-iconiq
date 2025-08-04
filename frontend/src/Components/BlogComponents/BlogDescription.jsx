@@ -296,10 +296,6 @@ export default function BlogDescription() {
                             day: "numeric",
                           })}
                         </span>
-                        <div className="flex items-center gap-1">
-                          <Eye className="w-3 h-3" />
-                          <span>{b.viewCount?.toLocaleString() || 0}</span>
-                        </div>
                       </div>
                     </div>
                   ))}

@@ -8,6 +8,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  ExternalLink,
 } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -38,184 +39,257 @@ export default function Footer() {
       name: "Facebook",
       icon: <Facebook />,
       href: "https://www.facebook.com/iconiqnp/?rdid=rNX7SW2qKqC4mgto",
-      color: "hover:text-white",
-      bgcolor: "hover:bg-blue-400",
+      color: "hover:text-blue-400",
+      bgcolor: "hover:bg-blue-400/20",
     },
     {
       name: "Instagram",
       icon: <Instagram />,
       href: "https://www.instagram.com/iconiqnp/#",
-      color: "hover:text-white",
-      bgcolor: "hover:bg-pink-400",
+      color: "hover:text-pink-400",
+      bgcolor: "hover:bg-pink-400/20",
     },
     {
       name: "LinkedIn",
       icon: <Linkedin />,
       href: "https://www.linkedin.com/in/iconiq/",
-      color: "hover:text-white",
-      bgcolor: "hover:bg-blue-400",
+      color: "hover:text-blue-500",
+      bgcolor: "hover:bg-blue-500/20",
     },
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] text-white mt-16 rounded-t-4xl relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
+    <footer className="bg-gradient-to-br from-[#C848C1] via-[#8B5CF6] to-[#54A6F9] text-white mt-16 relative overflow-hidden rounded-t-4xl">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-24 h-24 bg-yellow-300 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-16 right-16 w-24 h-24 bg-yellow-300 rounded-full blur-2xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-pink-300 rounded-full blur-xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/4 right-1/4 w-12 h-12 bg-cyan-300 rounded-full blur-lg animate-pulse delay-700"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
-        {/* Main 4-Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* 1st Grid: Logo and Title */}
-          <div className="space-y-4">
-            <div className="w-18 h-18 md:w-40 md:h-40 rounded-2xl border-2 border-white  overflow-hidden relative z-20 bg-white flex items-center justify-center">
-              <div className="text-lg md:text-xl lg:text-2xl font-bold text-purple-600">
-                <img src="Uploads/logo_iconiq_final.png" alt="" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Top Section - Brand & CTA */}
+        <div className="py-12 border-b border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Brand Section */}
+            <div className="text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start mb-4">
+                <div className="h-12 w-12 mr-3">
+                  <img
+                    src="Uploads/logo_head.png"
+                    alt="Iconiq Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="logo text-3xl font-bold bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
+                  iconiq
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* 2nd Grid: Page Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
-              Pages
-              <ArrowRight className="w-4 h-4 ml-2 opacity-60" />
-            </h3>
-            <ul className="space-y-2">
-              {pageLinks.map((link, idx) => (
-                <li key={idx}>
-                  <Link
-                    to={link.href}
-                    className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-1 inline-block relative group"
-                  >
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 3rd Grid: Work, Blog & Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
-              Services
-              <ArrowRight className="w-4 h-4 ml-2 opacity-60" />
-            </h3>
-            <ul className="space-y-2">
-              {workAndServiceLinks.map((link, idx) => (
-                <li key={idx}>
-                  <Link
-                    to={link.href}
-                    className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-1 inline-block relative group"
-                  >
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 4th Grid: Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
-              <MapPin className="w-5 h-5 mr-2" />
-              Get in Touch
-            </h3>
-
-            {/* Location */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 mb-4">
-              <a
-                href="https://www.google.com/maps?q=Sankhamul,+Kathmandu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block space-y-1 hover:text-yellow-400 transition-colors duration-300"
-              >
-                <p className="font-semibold text-yellow-200">
-                  Sankhamul, Naya Baneshwor
-                </p>
-                <p className="text-white/90 text-sm">Kathmandu, Nepal</p>
-              </a>
+              <p className="text-white/80 text-xl max-w-md mx-auto lg:mx-0">
+                Creating digital experiences that inspire and transform your
+                business vision into reality.
+              </p>
             </div>
 
-            {/* Email */}
-            <div className="flex items-center space-x-3 text-sm hover:text-yellow-400 transition-all duration-300 group">
-              <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-              <a
-                href="mailto:iconiqnp@gmail.com"
-                className="group-hover:text-yellow-400"
-              >
-                Iconiqnp@gmail.com
-              </a>
-            </div>
-
-            {/* Phone Numbers */}
-            <div className="flex items-start space-x-3 text-sm group">
-              <Phone className="w-4 h-4 mt-1 group-hover:scale-110 transition-transform duration-300" />
-              <div className="space-y-1 ">
+            {/* Contact Highlight */}
+            <div className="text-center lg:text-right">
+              <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+                Ready to start your project?
+              </h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+                <a
+                  href="mailto:iconiqnp@gmail.com"
+                  className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group"
+                >
+                  <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  Get in Touch
+                  <ExternalLink className="w-3 h-3 ml-2 opacity-70" />
+                </a>
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText("+977 9864687572");
-                    toast.success("Phone number copied to clipboard!");
+                    toast.success("Phone number copied!");
                   }}
-                  className="block hover:text-yellow-400 transition-all duration-300"
+                  className="inline-flex items-center px-6 py-3 bg-yellow-400/20 backdrop-blur-sm rounded-full hover:bg-yellow-400/30 transition-all duration-300 group"
                 >
-                  +977 986‑4687572
-                </button>
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText("+977 9705337437");
-                    toast.success("Phone number copied to clipboard!");
-                  }}
-                  className="block hover:text-yellow-400 transition-all duration-300"
-                >
-                  +977 970-5337437
+                  <Phone className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  Call Now
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom 3-Grid Section */}
-        <div className="border-t border-white/30 pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-            {/* 1st Grid: Copyright */}
+        {/* Main Content Section */}
+        <div className="py-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <ArrowRight className="w-5 h-5 mr-2 text-yellow-400" />
+                Pages
+              </h3>
+              <ul className="space-y-3">
+                {pageLinks.map((link, idx) => (
+                  <li key={idx}>
+                    <Link
+                      to={link.href}
+                      className="group flex items-center text-white/80 hover:text-yellow-300 transition-all duration-300 relative pl-4"
+                    >
+                      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-yellow-400 group-hover:w-3 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300 text-base">
+                        {link.name}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services Links */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <ArrowRight className="w-5 h-5 mr-2 text-yellow-400" />
+                Services
+              </h3>
+              <ul className="space-y-3">
+                {workAndServiceLinks.map((link, idx) => (
+                  <li key={idx}>
+                    <Link
+                      to={link.href}
+                      className="group flex items-center text-white/80 hover:text-yellow-300 transition-all duration-300 relative pl-4"
+                    >
+                      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-yellow-400 group-hover:w-3 transition-all duration-300"></span>
+                      <span className="group-hover:translate-x-1 transition-transform duration-300 text-base">
+                        {link.name}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <MapPin className="w-5 h-5 mr-2 text-yellow-400" />
+                Location
+              </h3>
+              <div className="space-y-4">
+                {/* Address Card */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <a
+                    href="https://www.google.com/maps?q=Sankhamul,+Kathmandu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:text-yellow-300 transition-colors duration-300"
+                  >
+                    <p className="font-semibold text-yellow-200 text-base">
+                      Sankhamul, Naya Baneshwor
+                    </p>
+                    <p className="text-white/70 text-sm mt-1">
+                      Kathmandu, Nepal
+                    </p>
+                  </a>
+                </div>
+
+                {/* Quick Contact */}
+                <div className="space-y-3">
+                  <div className="flex items-center text-sm text-white/70 hover:text-yellow-300 transition-colors cursor-pointer">
+                    <Mail className="w-4 h-4 mr-2" />
+                    <a href="mailto:iconiqnp@gmail.com">iconiqnp@gmail.com</a>
+                  </div>
+                  <div className="flex items-center text-sm text-white/70">
+                    <Phone className="w-4 h-4 mr-2" />
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText("+977 9864687572");
+                          toast.success("Phone copied!");
+                        }}
+                        className="block hover:text-yellow-300 transition-colors"
+                      >
+                        +977 986‑4687572
+                      </button>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText("+977 9705337437");
+                          toast.success("Phone copied!");
+                        }}
+                        className="block hover:text-yellow-300 transition-colors"
+                      >
+                        +977 970-5337437
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white">Stay Connected</h3>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {socialLinks.map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${social.color} ${social.bgcolor} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 p-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40`}
+                    aria-label={`Follow us on ${social.name}`}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <p className="text-white/60 text-sm">
+                  Follow us for latest updates and behind-the-scenes content
+                  from our creative projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
             <div className="text-center md:text-left">
-              <p className="text-sm text-white/80">
+              <p className="text-xs text-white/60">
                 &copy; {currentYear} Iconiq. All rights reserved.
               </p>
             </div>
 
-            {/* 2nd Grid: Bottom Links */}
-            <div className="flex justify-center space-x-6">
+            {/* Bottom Links */}
+            <div className="flex flex-wrap justify-center gap-6">
               {bottomLinks.map((link, idx) => (
                 <Link
                   key={idx}
                   to={link.href}
-                  className="text-sm hover:text-yellow-400 transition-all duration-300 relative group"
+                  className="group flex items-center text-xs text-white/60 hover:text-yellow-300 transition-all duration-300 relative pl-3"
                 >
-                  {link.name}
-                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0.5 bg-yellow-400 group-hover:w-2 transition-all duration-300"></span>
+                  <span className="group-hover:translate-x-0.5 transition-transform duration-300">
+                    {link.name}
+                  </span>
                 </Link>
               ))}
             </div>
 
-            {/* 3rd Grid: Social Media */}
-            <div className="flex justify-center md:justify-end space-x-4">
-              {socialLinks.map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  className={`${social.color} ${social.bgcolor} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 p-2 rounded-full`}
-                  aria-label={`Follow us on ${social.name}`}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+            {/* Back to Top */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center text-xs text-white/60 hover:text-yellow-300 transition-all duration-300 group"
+            >
+              <span className="mr-2">Back to Top</span>
+              <ArrowRight className="w-3 h-3 -rotate-90 group-hover:-translate-y-1 transition-transform" />
+            </button>
           </div>
         </div>
       </div>
