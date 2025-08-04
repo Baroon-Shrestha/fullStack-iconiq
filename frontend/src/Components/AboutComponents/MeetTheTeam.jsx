@@ -39,9 +39,9 @@ export default function MeetTheTeam() {
       ],
     },
     {
-      name: "Rabindra Giri",
+      name: "----",
       role: "Co-founder & COO",
-      img: "Uploads/rabin.png",
+      img: "Uploads/defaultpp.jpg",
       description:
         "Rabindra Giri leads the team as Manager, ensuring day-to-day operations run smoothly. His expertise lies in team coordination, project management, and ensuring client satisfaction through efficient workflow and clear communication.",
       socialLinks: [
