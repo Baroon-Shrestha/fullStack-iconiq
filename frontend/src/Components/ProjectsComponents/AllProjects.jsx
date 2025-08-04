@@ -14,7 +14,11 @@ const projectsData = [
     height: 400,
     category: ["Websites", "Branding"],
     longDescription:
-      "Momiji International Academy is a specialized educational consultancy dedicated exclusively to helping Nepali students and job seekers build a future in Japan. With a core focus on Japanese language training, higher education consulting, and career support through the Specified Skilled Worker (SSW) program, Momiji offers a holistic pathway for individuals who aspire to study, live, and work in Japan. Their dedicated team of language experts, cultural advisors, and placement specialists ensure that students are equipped with not just linguistic knowledge but also real-world preparedness to succeed in a foreign environment. Whether you're preparing for JLPT levels or gearing up for interviews under Japan’s SSW framework, Momiji’s support system is robust, practical, and deeply personalized. With a track record of guiding hundreds of students and professionals through this life-changing transition, Momiji stands out as a trustworthy and experienced institution for Japan-bound aspirants. When Momiji approached us at IconiqNP, they had a clear vision: to amplify their digital footprint and make their educational offerings more accessible and interactive. Our collaboration began with a deep understanding of their mission and the unique audience they serve. From there, we conceptualized and built a fully customized, modern, and mobile-responsive website tailored to both desktop and mobile users. The website features essential components such as multilingual course pages, an intuitive inquiry system, and easy-to-navigate resources that cater to prospective students and their guardians. We also incorporated event announcements, language class structures, and a clear pathway for users to explore Japan's study and SSW opportunities. To complement their digital presence, we designed engaging poster and motion graphics for Momiji’s seasonal events, class announcements, and cultural festivals, ensuring consistent visual branding across both print and digital platforms. By choosing to partner with IconiqNP, Momiji International Academy witnessed a transformative uplift in both brand visibility and user engagement. Their website now serves as a streamlined hub for course inquiries, student guidance, and institutional branding. Students can explore opportunities, learn about schedules and fees, and even participate in upcoming events—all from the convenience of their mobile devices. The visual identity across posters and marketing collateral has also become more unified and professional, reinforcing Momiji’s reputation as a credible and student-centric consultancy. Ultimately, our collaboration empowered Momiji to better connect with its community and expand its reach to more aspiring candidates seeking a future in Japan.",
+      "Momiji International Academy is a specialized educational consultancy dedicated exclusively to helping Nepali students and job seekers build a future in Japan. With a core focus on Japanese language training, higher education consulting, and career support through the Specified Skilled Worker (SSW) program, Momiji offers a holistic pathway for individuals who aspire to study, live, and work in Japan. Their dedicated team of language experts, cultural advisors, and placement specialists ensure that students are equipped with not just linguistic knowledge but also real-world preparedness to succeed in a foreign environment. Whether you're preparing for JLPT levels or gearing up for interviews under Japan’s SSW framework, Momiji’s support system is robust, practical, and deeply personalized. With a track record of guiding hundreds of students and professionals through this life-changing transition, Momiji stands out as a trustworthy and experienced institution for Japan-bound aspirants.",
+    longDescription2:
+      "When Momiji approached us at IconiqNP, they had a clear vision: to amplify their digital footprint and make their educational offerings more accessible and interactive. Our collaboration began with a deep understanding of their mission and the unique audience they serve. From there, we conceptualized and built a fully customized, modern, and mobile-responsive website tailored to both desktop and mobile users. The website features essential components such as multilingual course pages, an intuitive inquiry system, and easy-to-navigate resources that cater to prospective students and their guardians. We also incorporated event announcements, language class structures, and a clear pathway for users to explore Japan's study and SSW opportunities. To complement their digital presence, we designed engaging poster and motion graphics for Momiji’s seasonal events, class announcements, and cultural festivals, ensuring consistent visual branding across both print and digital platforms.",
+    longDescription3:
+      "By choosing to partner with IconiqNP, Momiji International Academy witnessed a transformative uplift in both brand visibility and user engagement. Their website now serves as a streamlined hub for course inquiries, student guidance, and institutional branding. Students can explore opportunities, learn about schedules and fees, and even participate in upcoming events—all from the convenience of their mobile devices. The visual identity across posters and marketing collateral has also become more unified and professional, reinforcing Momiji’s reputation as a credible and student-centric consultancy. Ultimately, our collaboration empowered Momiji to better connect with its community and expand its reach to more aspiring candidates seeking a future in Japan.",
     challenge:
       "Momiji International Academy lacked a scalable and modern digital presence.",
     solution:
@@ -741,14 +745,67 @@ export default function AllProjects() {
                       transition={{ delay: 0.55, duration: 0.6 }}
                     >
                       {selectedProject.longDescription && (
-                        <motion.p
-                          className="text-base container md:text-lg text-gray-200 leading-relaxed text-justify"
-                          initial={{ opacity: 0, y: 20 }}
+                        <motion.div
+                          className="space-y-6 container mx-auto px-4 md:px-6 py-8 bg-black/40 backdrop-blur rounded-2xl shadow-lg"
+                          initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.55, duration: 0.6 }}
+                          transition={{ delay: 0.3, duration: 0.6 }}
                         >
-                          {selectedProject.longDescription}
-                        </motion.p>
+                          {/* Main Heading */}
+                          <motion.h2
+                            className="text-2xl md:text-3xl font-bold text-white"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.5 }}
+                          >
+                            Works for {selectedProject.title}
+                          </motion.h2>
+
+                          {/* Section 1: About the Client */}
+                          <motion.div
+                            className="space-y-2"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                          >
+                            <h3 className="text-lg md:text-xl font-bold text-gray-300">
+                              About Momiji International Academy
+                            </h3>
+                            <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
+                              {selectedProject.longDescription}
+                            </p>
+                          </motion.div>
+
+                          {/* Section 2: What We Did */}
+                          <motion.div
+                            className="space-y-2"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6, duration: 0.5 }}
+                          >
+                            <h3 className="text-lg md:text-xl font-bold text-gray-300">
+                              Our Approach & Solution
+                            </h3>
+                            <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
+                              {selectedProject.longDescription2}
+                            </p>
+                          </motion.div>
+
+                          {/* Section 3: Outcome */}
+                          <motion.div
+                            className="space-y-2"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7, duration: 0.5 }}
+                          >
+                            <h3 className="text-lg md:text-xl font-bold text-gray-300">
+                              Results & Impact
+                            </h3>
+                            <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
+                              {selectedProject.longDescription3}
+                            </p>
+                          </motion.div>
+                        </motion.div>
                       )}
 
                       {/* Tags */}
