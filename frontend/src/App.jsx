@@ -59,7 +59,8 @@ export default function App() {
         {!admin && <Chat2 />}
 
         {/* Conditionally render Nav */}
-        {!shouldHideLayout && <Nav />}
+        {/* {!shouldHideLayout && <Nav />} */}
+        <Nav />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -117,6 +118,7 @@ export default function App() {
 
         {/* Conditionally render Footer */}
         {!shouldHideLayout && <Footer />}
+        {/* <Footer /> */}
       </div>
     </>
   );

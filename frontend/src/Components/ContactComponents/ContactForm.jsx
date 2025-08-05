@@ -144,7 +144,7 @@ export default function ContactForm() {
                 </div>
                 <div className="flex items-center space-x-4 group">
                   <div className="bg-gradient-to-r from-[#C848C1] to-[#54A6F9] p-3 rounded-full group-hover:scale-110 transition-transform">
-                    <FaPhone className="text-white" />
+                    <FaPhone className="text-white rotate-90" />
                   </div>
                   <div>
                     <p className="text-gray-300 text-sm">Phone</p>

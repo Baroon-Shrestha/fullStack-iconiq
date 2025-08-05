@@ -15,9 +15,9 @@ const projectsData = [
     category: ["Websites", "Branding"],
     longDescription:
       "Momiji International Academy is a specialized educational consultancy dedicated exclusively to helping Nepali students and job seekers build a future in Japan. With a core focus on Japanese language training, higher education consulting, and career support through the Specified Skilled Worker (SSW) program, Momiji offers a holistic pathway for individuals who aspire to study, live, and work in Japan. Their dedicated team of language experts, cultural advisors, and placement specialists ensure that students are equipped with not just linguistic knowledge but also real-world preparedness to succeed in a foreign environment. Whether you're preparing for JLPT levels or gearing up for interviews under Japan’s SSW framework, Momiji’s support system is robust, practical, and deeply personalized. With a track record of guiding hundreds of students and professionals through this life-changing transition, Momiji stands out as a trustworthy and experienced institution for Japan-bound aspirants.",
-    longDescription2:
+    longDescription1:
       "When Momiji approached us at IconiqNP, they had a clear vision: to amplify their digital footprint and make their educational offerings more accessible and interactive. Our collaboration began with a deep understanding of their mission and the unique audience they serve. From there, we conceptualized and built a fully customized, modern, and mobile-responsive website tailored to both desktop and mobile users. The website features essential components such as multilingual course pages, an intuitive inquiry system, and easy-to-navigate resources that cater to prospective students and their guardians. We also incorporated event announcements, language class structures, and a clear pathway for users to explore Japan's study and SSW opportunities. To complement their digital presence, we designed engaging poster and motion graphics for Momiji’s seasonal events, class announcements, and cultural festivals, ensuring consistent visual branding across both print and digital platforms.",
-    longDescription3:
+    longDescription2:
       "By choosing to partner with IconiqNP, Momiji International Academy witnessed a transformative uplift in both brand visibility and user engagement. Their website now serves as a streamlined hub for course inquiries, student guidance, and institutional branding. Students can explore opportunities, learn about schedules and fees, and even participate in upcoming events—all from the convenience of their mobile devices. The visual identity across posters and marketing collateral has also become more unified and professional, reinforcing Momiji’s reputation as a credible and student-centric consultancy. Ultimately, our collaboration empowered Momiji to better connect with its community and expand its reach to more aspiring candidates seeking a future in Japan.",
     challenge:
       "Momiji International Academy lacked a scalable and modern digital presence.",
@@ -38,13 +38,17 @@ const projectsData = [
     title: "Kansai International Japanese Language Center",
     subtitle: "Japanese Language Center",
     description:
-      "This website was developed for Kansai International Japanese Language Center to help streamline student access to course details, application forms, and learning materials. The UI was designed to reflect modern minimalism, supporting both native and international users looking to learn Japanese and pursue education in Japan.",
+      "We partnered with Kansai International Japanese Language Center to transform their digital presence and simplify the student journey. The new website offers streamlined access to course details, application forms, and study materials—supporting both local and international learners. With a clean, minimalist UI, the platform is tailored for students preparing for programs like JLPT and SSW, aligning Kansai’s academic excellence with a modern, user-friendly experience that boosts engagement and admissions.",
     tags: ["UX/UI Design", "Poster Design", "Mobile Responsive Application"],
     year: "2025",
     height: 500,
     category: "Websites",
     longDescription:
-      "This extended description elaborates how we helped Kansai International Japanese Language Center grow its digital presence using tailored design and technology solutions.",
+      "Kansai International Japanese Language Center is a respected educational institution committed to preparing students for academic and professional opportunities in Japan. Known for its strong focus on Japanese language education, Kansai caters to both local and international learners pursuing programs such as JLPT (Japanese Language Proficiency Test) and SSW (Specified Skilled Worker). The center offers culturally immersive instruction and structured language courses designed to align with Japan’s linguistic standards and workforce demands. With a mission to bridge global learners with Japanese education, Kansai needed a digital platform that could reflect its academic credibility and make essential resources more accessible to prospective students.",
+    longDescription1:
+      "To meet Kansai’s evolving needs, we developed a fully responsive and mobile-optimized website tailored specifically for language learners. Our design process emphasized simplicity, clarity, and accessibility—making it easy for students to find detailed course information, download application forms, and access visa guidance. We used calming visuals inspired by Japanese aesthetics and implemented intuitive navigation to enhance usability. Key call-to-action elements were strategically placed to drive inquiries and student engagement, while a dynamic backend allows the Kansai team to manage content updates, announcements, and schedules without technical assistance.",
+    longDescription2:
+      "Since the launch of the platform, Kansai International Japanese Language Center has witnessed significant improvement in its digital engagement and lead generation. Students now find it easier to discover and apply for relevant programs from any device, and administrators have reported increased efficiency in managing inquiries and updates. The intuitive design and mobile-first approach have resulted in longer session durations and higher click-through rates. Kansai has also seen growing interest from international applicants, particularly from countries targeting Japanese language certification and work-study pathways. Overall, the project has enabled Kansai to project a modern, accessible, and student-focused digital identity aligned with its academic goals.",
     challenge:
       "Kansai International Japanese Language Center lacked a scalable and modern digital presence.",
     solution:
@@ -60,15 +64,19 @@ const projectsData = [
   {
     image: "Uploads/kings.png",
     title: "King Motors Pvt. Ltd",
-    subtitle: "Premimum Cars Showroom",
+    subtitle: "Premium Car Dealership & Inventory System",
     description:
-      "We built a powerful web platform for King Motors Pvt. Ltd, enabling them to list their reconditioned car inventory with full specs, real-time updates, and customer support. The platform includes a search and filter system to improve browsing, making the car-buying process smoother for users.",
+      "We developed a feature-rich digital platform for King Motors Pvt. Ltd to showcase their reconditioned and premium car listings with real-time updates, full vehicle specs, and lead capture tools. The site includes an intuitive search and filter system, enhancing the browsing and buying experience for customers.",
     tags: ["Inventory Management System", "E-commerce", "Poster Design"],
     year: "2025",
     height: 350,
     category: "Websites",
     longDescription:
-      "This extended description elaborates how we helped King Motors Pvt. Ltd grow its digital presence using tailored design and technology solutions.",
+      "King Motors Pvt. Ltd is a rising name in Nepal’s automotive retail sector, known for offering a curated selection of premium and reconditioned vehicles. With a commitment to delivering quality and trust, the brand focuses on modernizing the car-buying experience for Nepali customers. Prior to our collaboration, King Motors had limited digital presence and lacked a structured system to manage their growing inventory. The dealership wanted a solution that could streamline vehicle listing, simplify customer interaction, and position them as a credible player in the competitive automobile market.",
+    longDescription1:
+      "To meet King Motors’ operational and customer engagement goals, we designed a responsive, mobile-first website tailored to the auto industry. We built a robust inventory management system that enables real-time updates on car listings—complete with images, specs (engine, fuel type, mileage, etc.), and pricing. Each listing page was optimized for conversions with quick inquiry options and mobile-friendly layouts. Advanced search and filter functionalities were implemented so users could browse by brand, price, fuel type, or transmission. A minimalist UI with strong branding helped reinforce the dealership’s trust factor. Additionally, we focused on backend efficiency, allowing the internal team to manage inventory without technical bottlenecks. Performance optimization, fast loading times, and an SEO-friendly structure were also key elements of the solution.",
+    longDescription2:
+      "Since the launch, King Motors has experienced a significant uptick in lead generation and organic web traffic. Users are spending more time browsing listings, and inquiries via the website have increased substantially. The filtering options and clean layout have improved customer satisfaction by making it easier to find the right vehicle. On the administrative side, the internal team now enjoys a smooth workflow when adding or updating listings. The digital transformation has not only enhanced customer engagement but also positioned King Motors as a digitally mature and customer-centric dealership in Nepal's evolving auto market.",
     challenge:
       "King Motors Pvt. Ltd lacked a scalable and modern digital presence.",
     solution:
@@ -86,19 +94,23 @@ const projectsData = [
     title: "NS Automobile Pvt. Ltd",
     subtitle: "Certified Auto Dealership – New & Pre-Owned",
     description:
-      "For NS Automobile Pvt. Ltd, a leading reconditioned car showroom, we delivered a comprehensive digital presence through strategic digital marketing campaigns, visually engaging posters, motion graphics content, and cohesive branding solutions. Our work enhanced their brand visibility and positioned them more competitively in the automotive retail market.",
+      "For NS Automobile Pvt. Ltd, a trusted name in reconditioned and new vehicles, we crafted a powerful visual and digital branding strategy. Our solutions included digital marketing, posters, motion graphics, and a cohesive brand identity—positioning the dealership competitively in Nepal’s evolving automotive market.",
     tags: ["Poster Design", "Digital Marketing", "Motion Graphics", "Branding"],
     year: "2025",
     height: 350,
     category: ["Branding"],
     longDescription:
-      "This extended description elaborates how we helped NS Automobile Pvt. Ltd grow its digital presence using tailored design and technology solutions.",
+      "NS Automobile Pvt. Ltd is a rapidly growing auto dealership in Nepal, offering a range of certified reconditioned and brand-new vehicles. While their physical operations had gained credibility through excellent customer service and vehicle quality, their brand identity lacked the digital polish and consistency to match. NS was facing increasing competition in an industry where digital presence, online engagement, and visual storytelling were becoming vital to customer trust and lead generation. They needed to evolve from being just another car dealer to a recognizable, credible, and emotionally engaging automotive brand. That's when our team was brought in—to align their brand experience with their market ambition.",
+    longDescription1:
+      "We began by conducting a brand audit and market positioning analysis, which shaped our creative direction for NS Automobile. Our team designed a visually strong and emotionally engaging brand identity, built on professionalism and customer trust. This included a consistent set of branding elements—posters, motion graphics, social media templates, and digital banners—each created with attention to modern aesthetic trends and local customer preferences. We also planned and executed seasonal campaigns, story-driven video ads, and offline marketing materials that carried the same look and tone. Additionally, we delivered a mobile-optimized microsite where users could browse listings, book appointments, or contact sales—all tailored to drive measurable interaction. Every deliverable aimed to connect with digital-first buyers and elevate the dealership’s public image.",
+    longDescription2:
+      "After launching our campaigns and visuals, NS Automobile quickly saw improvements in brand recognition, social engagement, and customer interest. Their social media posts began attracting significantly more views and shares, while footfall at their physical showroom increased due to well-targeted campaigns. The dealership’s new identity stood out both online and offline—whether on digital feeds, printed flyers, or large-format visuals. Customers praised the professional yet friendly brand image, and the mobile-optimized microsite made inquiries more seamless. Overall, the branding transformation empowered NS to compete with more established dealerships and gain the digital trust of modern car buyers.",
     challenge:
-      "NS Automobile Pvt. Ltd lacked a scalable and modern digital presence.",
+      "NS Automobile Pvt. Ltd had strong offline credibility but lacked cohesive branding and digital visibility.",
     solution:
-      "We developed a responsive platform with a focus on user experience, performance, and accessibility for NS Automobile Pvt. Ltd.",
+      "We delivered a full branding and digital activation strategy—poster design, motion graphics, marketing assets, and a responsive digital platform—to elevate their brand identity.",
     result:
-      "NS Automobile Pvt. Ltd experienced improved user interaction, higher engagement, and greater online visibility.",
+      "NS Automobile Pvt. Ltd saw increased engagement, improved brand recognition, and higher customer trust across all digital and physical touchpoints.",
     mediaAssets: [
       "Uploads/ns_1.jpg",
       "Uploads/ns_2.png",
@@ -108,20 +120,25 @@ const projectsData = [
   {
     image: "Uploads/doller.jpg",
     title: "Doller Sewa",
-    subtitle: "Digital Services Platform",
+    subtitle: "Digital Subscription & Services Marketplace",
     description:
-      "Doller Sewa is an affordable digital service provider catering to small businesses and freelancers. We developed a multi-service platform where users can order design, social media, and web development packages with easy navigation, a built-in messaging system, and integrated payment options.",
-    tags: ["E-commerce", "Digital Platform"],
+      "Doller Sewa is an emerging digital platform that offers affordable subscription-based services like Netflix, Canva, ChatGPT, and more. Aimed at digital consumers and resellers in Nepal, it simplifies access to premium digital tools by offering local payment support, fast delivery, and reliable service. We were brought in to build a centralized, mobile-optimized ordering system to streamline product discovery, ordering, and account delivery.",
+    tags: ["Digital Marketplace", "Subscription Services", "E-commerce"],
     year: "2025",
     height: 450,
     category: "Websites",
     longDescription:
-      "This extended description elaborates how we helped Doller Sewa grow its digital presence using tailored design and technology solutions.",
-    challenge: "Doller Sewa lacked a scalable and modern digital presence.",
+      "Doller Sewa is a Nepal-based platform that makes global digital subscriptions more accessible to local users. From entertainment (Netflix, YouTube Premium) and design tools (Canva, Adobe) to productivity software (ChatGPT Plus, Grammarly Premium), the platform bridges the gap between international services and local demand. Prior to our collaboration, the service was operated manually through social media, lacking a structured, scalable, and secure system. Customers had no self-service portal to browse subscriptions, place orders, or receive account credentials efficiently.",
+    longDescription1:
+      "To transform Doller Sewa into a full-scale digital service marketplace, we developed a responsive, mobile-friendly e-commerce platform. Users can now explore categorized digital services, view package details, and purchase subscriptions directly from the website. We integrated secure payment options (including local gateways), automated confirmation systems, and a delivery workflow that connects customers with their digital accounts seamlessly. The UI is clean, fast, and tailored for both individual buyers and resellers. Additionally, we included tools for customer support and bulk orders to support business growth.",
+    longDescription2:
+      "After launch, Doller Sewa saw increased order volume, better user retention, and a reduction in manual operations. Customers appreciated the convenience of instant access to popular subscriptions at affordable rates, all within a secure, intuitive environment. The streamlined interface and backend automation allowed Doller Sewa to scale operations while maintaining excellent customer service. Today, it stands as a reliable gateway for Nepali users to access international digital tools with local simplicity.",
+    challenge:
+      "Doller Sewa lacked a modern, automated platform to scale subscription-based digital services.",
     solution:
-      "We developed a responsive platform with a focus on user experience, performance, and accessibility for Doller Sewa.",
+      "We developed a fast, secure, and user-focused digital platform that automates the ordering and delivery of subscription services.",
     result:
-      "Doller Sewa experienced improved user interaction, higher engagement, and greater online visibility.",
+      "Doller Sewa gained efficiency, improved order management, and significantly enhanced customer satisfaction and growth.",
     mediaAssets: [
       "Uploads/doller_1.jpg",
       "Uploads/doller_2.png",
@@ -131,15 +148,20 @@ const projectsData = [
   {
     image: "Uploads/omni2.png",
     title: "Omni Global International Educational Consultancy",
-    subtitle: "Educational Consultancy",
+    subtitle:
+      "Your Gateway to Global Education – Japan, Cyprus, Finland & Korea",
     description:
-      "Omni Global offers expert guidance for students aiming to study in Japan. We developed a consultancy platform that simplifies the process of university selection, application, visa processing, and document submission. The website is fully mobile-optimized and includes a content management dashboard for easy updates.",
+      "Omni Global is a trusted education consultancy specializing in study abroad programs for Japan, Cyprus, Finland, and South Korea. We designed their digital platform to streamline university selection, visa processing, application tracking, and document submission. The system includes a dynamic CMS and mobile-first design for effortless access.",
     tags: ["Mobile Responsive Application"],
     year: "2025",
     height: 380,
     category: "Websites",
     longDescription:
-      "This extended description elaborates how we helped Omni Global Consultancy establish a smooth digital onboarding experience for students planning to study in Japan.",
+      "Omni Global International Educational Consultancy is a trusted name among Nepali students aspiring to study abroad. With a multi-country focus—Japan, Cyprus, Finland, and South Korea—Omni Global provides complete educational counseling, from university selection to visa and document support. Their advisors bring deep regional expertise and a student-first philosophy, helping candidates navigate every phase of their academic journey. Whether it's preparing for Japanese language exams or choosing the right European university, Omni Global ensures that students are guided with precision, ethics, and a global outlook. Their expanding portfolio and positive student success stories are a testament to their credibility and impact in Nepal's study abroad ecosystem.",
+    longDescription1:
+      "Our collaboration with Omni Global started with the goal of creating a centralized platform that enhances their service delivery. We designed and built a fully mobile-responsive website that caters to students, parents, and consultants alike. The platform includes step-by-step program overviews, destination-specific service pages, intuitive inquiry forms, and dynamic resources to guide students through eligibility, application, and departure processes. Additionally, we developed a custom content management dashboard, enabling Omni Global's team to update courses, announcements, blogs, and intake deadlines without technical dependencies. Visual elements and UX were strategically designed to align with student behavior and information-seeking patterns.",
+    longDescription2:
+      "Since launching the platform, Omni Global has experienced a tangible uplift in lead generation, streamlined inquiry handling, and better follow-up rates. Students can now access information 24/7, submit pre-application forms online, and receive destination-specific guidance with ease. For administrators, the CMS has reduced content update friction, improving time-to-market for new announcements and services. As a result, Omni Global is now positioned as a tech-enabled education consultancy, delivering fast, transparent, and modern support for international student mobility.",
     challenge:
       "Omni Global lacked a centralized digital platform for guiding students through the consultation and application process.",
     solution:
@@ -161,9 +183,13 @@ const projectsData = [
     tags: ["UX/UI Design", "Social Commerce", "Mobile Responsive Application"],
     year: "2025",
     height: 380,
-    category: "Designing",
+    category: ["Designing", "Websites"],
     longDescription:
-      "This extended description outlines how we helped Ghar Sansar create a professional and scalable digital commerce experience for home and lifestyle products.",
+      "Ghar Sansar Pvt. Ltd is a trusted supplier of hardware, home improvement tools, and essential household products in Nepal. Despite having a wide selection of quality goods—from tiles and plumbing fixtures to paint and kitchen hardware—their operations were limited to traditional in-store sales. As consumer behavior shifted rapidly toward online shopping, Ghar Sansar recognized the need for a modern digital platform to remain competitive. They approached us with a clear vision: to establish an online presence that would not only showcase their products beautifully but also allow customers to browse and order seamlessly from any device.",
+    longDescription1:
+      "To address Ghar Sansar’s goals, we designed and developed a mobile-first e-commerce website tailored for the hardware and home essentials market. The platform features clean UI/UX, category-based filtering, and a simplified ordering process. Products are smartly organized into intuitive categories, enabling users to quickly explore offerings like bathroom accessories, plumbing tools, tiles, lighting, and more. We also implemented a scalable architecture that supports social commerce integration with platforms like Facebook and Instagram. Every page was built with performance, responsiveness, and usability in mind—ensuring smooth navigation for both individual customers and B2B clients placing bulk orders. Our design emphasized clarity and ease-of-use, reflecting the brand’s professionalism and approachability.",
+    longDescription2:
+      "Following the launch of the new platform, Ghar Sansar witnessed an immediate shift in engagement and ordering behavior. Customers across Nepal began exploring their catalog online, placing direct orders, and making product inquiries without visiting the physical store. The digital storefront helped reduce reliance on foot traffic, improved operational efficiency, and expanded their market reach. With faster service response and a user-friendly digital interface, the business gained a competitive edge in the home improvement sector. Ghar Sansar is now well-positioned for future digital growth, with a scalable foundation to support marketing campaigns, loyalty programs, and social selling.",
     challenge:
       "Ghar Sansar faced limitations selling their products without a proper e-commerce presence.",
     solution:
@@ -185,9 +211,13 @@ const projectsData = [
     tags: ["Poster and Motion Graphics", "Mobile Responsive Application"],
     year: "2025",
     height: 380,
-    category: "Websites",
+    category: "Designing",
     longDescription:
-      "We supported Nisani Consultancy with a visually clear, mobile-friendly education portal tailored to students interested in Japan-based learning.",
+      "Nisani Educational Consultancy Pvt. Ltd is a specialized education advisory firm focused on guiding students toward academic opportunities in Japan. With expertise in Japanese language programs, university pathways, and visa documentation, Nisani plays a vital role in bridging the gap between Nepali students and institutions in Japan. However, they lacked a comprehensive and accessible digital platform to communicate their services effectively. Their growing student base and increasing inquiry volume demanded a solution that was mobile-friendly, information-rich, and easy to navigate. Our mission was to help them build a professional, functional, and engaging online presence that could serve both as an information hub and a communication channel.",
+    longDescription1:
+      "To meet Nisani's needs, we designed and developed a clean, mobile-responsive website tailored to students interested in Japanese education. The platform features well-organized sections on language programs, university guidance, downloadable forms, and document checklists, along with clearly structured application steps. A major focus was creating a smooth user journey—whether someone wanted to explore available courses, learn about studying in Japan, or get in touch with a counselor. We integrated a dedicated contact system that enables students to book one-on-one counseling or submit inquiries quickly. Additionally, we supported the brand with visually engaging poster and motion graphic content, enhancing both online and offline promotional campaigns. The design language emphasizes trust, clarity, and simplicity—aligning perfectly with the values of an educational consultant.",
+    longDescription2:
+      "The launch of the new platform brought immediate value to Nisani Educational Consultancy. With improved structure and mobile compatibility, student registrations increased, and inquiries became more streamlined and easier to manage. Students could now access all essential resources—like course details, forms, and guidance—without confusion or delays. The consultancy team reported that the site helped reduce repetitive questions, allowing them to focus more on personalized support. Most importantly, the platform helped position Nisani as a credible and reliable brand in the Japan-focused education space, strengthening their reputation among students and partner institutions alike.",
     challenge:
       "They lacked a comprehensive website to communicate their services and application processes clearly.",
     solution:
@@ -203,21 +233,25 @@ const projectsData = [
   {
     image: "Uploads/sanskar.jpg",
     title: "Sanskar Academy",
-    subtitle: "Vastu Related Classes & Training Center",
+    subtitle: "Vastu Training & Educational Institute",
     description:
-      "We created a modern digital presence for Sanskar Academy, a consultancy helping students pursue higher studies and training programs in Japan. The platform includes visual storytelling through posters and motion content, along with informative sections on Japanese culture, language courses, and visa steps.",
+      "Sanskar Academy offers professional Vastu-related training programs focused on ancient principles of space, energy, and balance. We supported their educational mission by creating a cohesive visual identity through posters, graphics, and motion-based content that enhanced their promotional reach and brand engagement.",
     tags: ["Poster and Graphics Design", "Ads and Motion Graphics"],
     year: "2025",
     height: 380,
     category: "Designing",
     longDescription:
-      "Sanskar Academy approached us to revamp their brand identity digitally with a strong visual narrative and easy-to-access information.",
+      "Sanskar Academy is a specialized institute committed to educating individuals in the field of Vastu Shastra—an ancient Indian science focused on harmonizing environments through spatial alignment and energy flow. With growing demand for structured Vastu education, Sanskar Academy aimed to extend its reach by establishing a professional and consistent visual identity. However, their previous branding lacked visual impact and emotional resonance with modern learners. They needed compelling visual content to reflect the depth of their subject matter and attract a broader audience through digital and print campaigns. That’s where our team came in—to build a strong, culturally grounded visual presence using impactful design and motion storytelling.",
+    longDescription1:
+      "Our creative approach focused on combining traditional aesthetics with modern visual trends to capture the essence of Vastu education. We developed a wide range of poster templates, course banners, and motion graphics tailored to Sanskar Academy’s training offerings, including certification programs, workshops, and awareness sessions. The visual system utilized earth-tone palettes, geometric symbolism, and calm typographic layouts to convey clarity, balance, and professionalism. Animated explainer videos were also designed to communicate Vastu concepts in a simplified, engaging format—ideal for use in ads, reels, and educational intros. All assets were optimized for both print and digital platforms, ensuring consistency across marketing channels.",
+    longDescription2:
+      "Following the branding rollout, Sanskar Academy reported higher visibility in both online and offline campaigns. The motion-driven visuals attracted strong attention on social platforms, while the poster series gave their seminars and workshops a polished, professional appearance. Students and instructors responded positively to the new visual identity, noting its alignment with the cultural roots and scientific depth of Vastu Shastra. With a stronger brand recall and a clearer way to communicate their offerings, Sanskar Academy has become more recognizable and respected within Nepal’s growing alternative education and spiritual wellness landscape.",
     challenge:
-      "Their existing platform lacked visual consistency and failed to attract modern learners.",
+      "Sanskar Academy lacked a modern visual identity that aligned with the depth and cultural relevance of Vastu education.",
     solution:
-      "We delivered a vibrant UI with animated motion assets, structured training details, and CTA-driven layouts.",
+      "We delivered a cohesive branding package with print-ready posters, animated promotional content, and a visually grounded design system.",
     result:
-      "Sanskar Academy witnessed better lead generation and stronger brand recall among students and parents.",
+      "Sanskar Academy gained stronger brand visibility, improved outreach, and higher engagement across digital and offline channels.",
     mediaAssets: [
       "Uploads/sanskar_1.jpg",
       "Uploads/sanskar_2.png",
@@ -235,7 +269,12 @@ const projectsData = [
     height: 380,
     category: "Websites",
     longDescription:
-      "To elevate their online presence, Navadebi Jewellers wanted a polished digital showcase of their gold and diamond collections.",
+      "Navadebi Jewellers, a trusted name in traditional and contemporary jewelry retail, approached us with a vision to establish a refined and immersive digital presence. Known for their intricate gold and diamond pieces, they wanted a platform that could reflect the elegance of their craftsmanship while appealing to modern, digitally active customers—especially younger buyers accustomed to browsing and shopping on mobile devices. Their existing digital footprint lacked the sophistication and functionality necessary to compete with other premium jewelry brands online. Our goal was to transform their digital storefront into a visually luxurious and user-friendly experience that would attract attention, drive engagement, and encourage showroom visits.",
+    longDescription1:
+      "We designed and developed a gallery-first, mobile-optimized website that puts the spotlight on Navadebi's rich product collection. The platform features a clean, minimalist UI to let the beauty of the jewelry shine, while also incorporating user-friendly navigation for easy exploration. High-resolution visuals, subtle animations, and intuitive product categorization ensure that visitors can engage with the pieces in a seamless and aesthetically pleasing way. In addition to the product showcase, we built custom inquiry and appointment booking forms, allowing potential customers to request details or book showroom visits directly from the site. With performance optimization for mobile devices and a design language inspired by luxury retail, the website now mirrors the sophistication of the Navadebi brand while providing practical tools for customer interaction.",
+
+    longDescription2:
+      "The new digital experience resulted in a significant uptick in customer engagement, particularly among mobile users. Navadebi Jewellers reported a clear increase in both online product inquiries and walk-in appointments, directly attributable to the new site’s booking functionality and mobile responsiveness. Customers found the product browsing experience smoother, more organized, and visually appealing—creating a stronger emotional connection with the brand. The site also allowed Navadebi to build trust and brand value digitally, positioning them competitively alongside established jewelry retailers in the online space. Ultimately, the project gave Navadebi Jewellers not just a website, but a powerful marketing and engagement platform tailored for the modern shopper.",
     challenge:
       "They lacked a compelling platform to attract younger digital-native buyers.",
     solution:
@@ -249,6 +288,8 @@ const projectsData = [
     ],
   },
 ];
+
+//racing, arkob
 
 function Cursor({ isVisible, position, text }) {
   if (!isVisible) return null;
@@ -769,7 +810,7 @@ export default function AllProjects() {
                             transition={{ delay: 0.5, duration: 0.5 }}
                           >
                             <h3 className="text-lg md:text-xl font-bold text-gray-300">
-                              About Momiji International Academy
+                              About {selectedProject.title}
                             </h3>
                             <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
                               {selectedProject.longDescription}
@@ -787,7 +828,7 @@ export default function AllProjects() {
                               Our Approach & Solution
                             </h3>
                             <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
-                              {selectedProject.longDescription2}
+                              {selectedProject.longDescription1}
                             </p>
                           </motion.div>
 
@@ -802,7 +843,7 @@ export default function AllProjects() {
                               Results & Impact
                             </h3>
                             <p className="text-base md:text-lg text-gray-200 leading-relaxed text-justify">
-                              {selectedProject.longDescription3}
+                              {selectedProject.longDescription2}
                             </p>
                           </motion.div>
                         </motion.div>

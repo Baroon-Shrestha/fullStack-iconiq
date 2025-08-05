@@ -30,7 +30,7 @@ export default function Footer() {
 
   const bottomLinks = [
     { name: "Contact", href: "/contact" },
-    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Privacy Policy", href: "/policy" },
     { name: "Terms of Service", href: "/terms" },
   ];
 
@@ -39,22 +39,22 @@ export default function Footer() {
       name: "Facebook",
       icon: <Facebook />,
       href: "https://www.facebook.com/iconiqnp/?rdid=rNX7SW2qKqC4mgto",
-      color: "hover:text-blue-400",
-      bgcolor: "hover:bg-blue-400/20",
+      color: "hover:text-white",
+      bgcolor: "hover:bg-blue-400",
     },
     {
       name: "Instagram",
       icon: <Instagram />,
       href: "https://www.instagram.com/iconiqnp/#",
-      color: "hover:text-pink-400",
-      bgcolor: "hover:bg-pink-400/20",
+      color: "hover:text-white",
+      bgcolor: "hover:bg-pink-400",
     },
     {
       name: "LinkedIn",
       icon: <Linkedin />,
       href: "https://www.linkedin.com/in/iconiq/",
-      color: "hover:text-blue-500",
-      bgcolor: "hover:bg-blue-500/20",
+      color: "hover:text-white",
+      bgcolor: "hover:bg-blue-500",
     },
   ];
 
@@ -97,10 +97,10 @@ export default function Footer() {
               <h3 className="text-2xl font-bold mb-4 text-yellow-300">
                 Ready to start your project?
               </h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-end">
                 <a
                   href="mailto:iconiqnp@gmail.com"
-                  className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group"
+                  className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group"
                 >
                   <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   Get in Touch
@@ -111,7 +111,7 @@ export default function Footer() {
                     navigator.clipboard.writeText("+977 9864687572");
                     toast.success("Phone number copied!");
                   }}
-                  className="inline-flex items-center px-6 py-3 bg-yellow-400/20 backdrop-blur-sm rounded-full hover:bg-yellow-400/30 transition-all duration-300 group"
+                  className="inline-flex items-center px-4 py-2 bg-yellow-400/20 backdrop-blur-sm rounded-full hover:bg-yellow-400/30 transition-all duration-300 group"
                 >
                   <Phone className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   Call Now
@@ -170,14 +170,15 @@ export default function Footer() {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h3 className="text-xl font-bold text-white flex items-center">
                 <MapPin className="w-5 h-5 mr-2 text-yellow-400" />
                 Location
               </h3>
               <div className="space-y-4">
                 {/* Address Card */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                {/* <div className=" p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"> */}
+                <div>
                   <a
                     href="https://www.google.com/maps?q=Sankhamul,+Kathmandu"
                     target="_blank"
@@ -195,11 +196,11 @@ export default function Footer() {
 
                 {/* Quick Contact */}
                 <div className="space-y-3">
-                  <div className="flex items-center text-sm text-white/70 hover:text-yellow-300 transition-colors cursor-pointer">
+                  <div className="flex items-center text-sm text-white hover:text-yellow-300 transition-colors cursor-pointer">
                     <Mail className="w-4 h-4 mr-2" />
                     <a href="mailto:iconiqnp@gmail.com">iconiqnp@gmail.com</a>
                   </div>
-                  <div className="flex items-center text-sm text-white/70">
+                  <div className="flex items-center text-sm text-white">
                     <Phone className="w-4 h-4 mr-2" />
                     <div className="space-y-2">
                       <button
@@ -238,7 +239,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${social.color} ${social.bgcolor} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 p-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40`}
+                    className={`${social.color} ${social.bgcolor} transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 p-2 rounded-full bg-white/10 backdrop-blur-sm`}
                     aria-label={`Follow us on ${social.name}`}
                   >
                     {social.icon}
@@ -247,7 +248,7 @@ export default function Footer() {
               </div>
 
               <div className="mt-6">
-                <p className="text-white/60 text-sm">
+                <p className="text-white text-md">
                   Follow us for latest updates and behind-the-scenes content
                   from our creative projects.
                 </p>
